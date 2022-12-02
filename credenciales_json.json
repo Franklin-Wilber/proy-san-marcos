@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pubsub-368620",
+  "private_key_id": "b0c3079d6b9ddb97c5f3c888b79b105bc98ddec5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC+fjCc69RN5NWi\nEwLVYPLA3ojWQIA+iIdnZ1zFDBJFQohgLTDUjRqCOY6eJakYmO7v1rJew1cjxEEb\nwSytRidgyV1vNiRM8eIA7IsQso4naBG6gEVGSlW6cbx8bQVDfJnRXHMUC9otY677\nVrRLZsTP7K4CII2UkHu1AWdOlpmhqHM/97k8vO++kUL8n1RJ5z0T+Tc30osIoOnW\nR0cYBIJEB6sv82UqjZQieqMDtByjqH7+0GPN3/6mmUKI1E1SR4QL5Wydr5M5mOgX\nX1fBuzbR+O8Wyt6CS3Odq4FfvfiwGNdsqPsjYVC+ZJ3mAXuIVhWG1zwepY2ratyo\nmCr4zQ1JAgMBAAECgf97Vbij4QzUYhTvmt96yApkVbDDB4AA/OSuTn4CFo69yRYD\nLz8uXy2Kozlzq26QPnR1VMyoDlGdFrQRBEGo7oMQZ0/XcXaPWwy5DG39oZ3oZbkU\nx3gSyo426OzgorWFvGba5sCbehEI0kG4+apCJ4fGF7eSKQGB7wopZ387osZVo1x2\ny0tXFxE/3kShWQHVeOdGR9UxXZGyp337XOqlbgE7PuYF6iw95VgNeQmoHuZMVI7L\nWGpgT/Cv/Z1yqc1zMwOafcbPofmxnvCGxsGdF/h3OX7ErbeBxMXNSR6rMgsxVKHX\nBipX3zC/0B4Yd6fNZt3wby+Gz+8d/zCuZ/gIuu0CgYEA6xQz70SpJiJrpWz+ztCn\nGIeNO1wfS6sWmins+366aoVbezNeW95Gi4H5BzBgqp4JDAbleg+E1mmLXhFh7b0Q\nVEXtu4i1JgyeWACWah8/a013depPHN5ALTtFXL6eJEvc1Nt/6NYUkY6rNPxbIuWk\n2Aa3AEOsWKpH3uf6tXT00KUCgYEAz3IvgSucO2DIiFOZW+DDccc260vBg/9d/+vm\nnXFetc6Avao9eEKErlqDyTAjF8tZZaXSpjc/QPNpUptQAfdJxqqLYE0bMNJ6Key/\n/y4bIk3CyeJ3JVw/WyBIJXjd3ElmXjN6JjL8YY60mIwTnht15t5CysgOgS4IpXDs\nxMM/ZNUCgYAWiXJNLwz0Xfpp+qAXHcPXQy+UEEnjzDw3fWt91PF0QuK5Vfxm3FFx\nEH3aZZXu5YXChGq9n/1BPQ8ibpIv459MJQQcpYeQZUdM8ol5FRPUarHYOSVqhBgs\n/fCxaojou+ko8v45SUThi4b4ZnUqTE/YchRbTyGXwoNvaFgNy2+pDQKBgQCN9wTP\njzrB4AAcW6nOGMloKf9Jk3SBktePdq9B+/3mycWNBt4+WLdYYpVhr9G0TPOG/q5k\nFdbx6iKf564fSk5w6PGtG9eJ1+DGpEDYr4LePP0bECKdrL2m7Tayfj7GrGyj9vKX\nBbl2QiURaHtcbkqHjn+DKtnSSeCc5+UA2uWdaQKBgQDD5YDbvfyYqfb60tX5A5Fj\n4PqO3PLCDdun1wFQKZNBuNgIBcpJzp5ZDE28BlhIxuUla13/dpOQH35bzbvzUrMk\n32xRMZ0fC3Ovjs2Jg+R5lWeVucKcAzS8NfqAbiMZhd8T0rMasktARYMCeIWpX882\n5IBvZdTvbilTxtu6MxiNGg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "proj-san-marcos@pubsub-368620.iam.gserviceaccount.com",
+  "client_id": "103035674482292568940",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/proj-san-marcos%40pubsub-368620.iam.gserviceaccount.com"
+}

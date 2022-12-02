@@ -1,0 +1,9 @@
+{
+    "project_id": "pubsub-368620",
+    "thread_topic_id": "demo-san-marcos", 
+
+
+    "courses_topic_name": "demo-san-marcos",
+    "courses_subscriptor_name": "demo-san-marcos-sub-2",
+    "file_credential_path": "credenciales_json.json"
+}
