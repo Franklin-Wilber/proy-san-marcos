@@ -1,7 +1,11 @@
 {
     "project_id": "pubsub-368620",
-    "thread_topic_id": "demo-san-marcos", 
 
+    "PUB_THREAD_GAS_SEND": "PUB_THREAD_GAS_SEND", 
+    "SUB_THREAD_PY_RECEIVE_": "SUB_THREAD_PY_RECEIVE_<< SERIAL_NUMBER >>",
+
+    "PUB_THREAD_PY_REQUEST": "PUB_THREAD_PY_REQUEST",
+    "SUB_THREAD_GAS_PROCESS": "SUB_THREAD_GAS_PROCESS",
 
     "courses_topic_name": "demo-san-marcos",
     "courses_subscriptor_name": "demo-san-marcos-sub-2",

@@ -14,20 +14,21 @@ def create():
         publisher  = pubsub_v1.PublisherClient()
         subscriber = pubsub_v1.SubscriberClient()
 
-        project_id = config.project_id
-        topic_id = config.thread_topic_id
-        subscription_id = helpers.getSubscriptionThreadName()
+        PROJECT_ID = config.project_id
+        PUB_THREAD_PY_REQUEST = config.PUB_THREAD_PY_REQUEST
+        SUB_THREAD_PY_RECEIVE = config.SUB_THREAD_PY_RECEIVE
 
-        print(subscription_id)
-
-        subscription_path = subscriber.subscription_path(project_id,subscription_id)
+        topic_path = publisher.topic_path(PROJECT_ID,PUB_THREAD_PY_REQUEST)
+        subscription_path = subscriber.subscription_path(PROJECT_ID,SUB_THREAD_PY_RECEIVE)
         exists = False
-
-        topic_path = publisher.topic_path(project_id,topic_id)
+        
         response = publisher.list_topic_subscriptions(request={ "topic": topic_path })
         for subscription_path_item in response:
             if subscription_path_item == subscription_path:
                 exists = True
+
+        print(topic_path)
+        print(subscription_path)
 
         if exists == False :
             with subscriber:

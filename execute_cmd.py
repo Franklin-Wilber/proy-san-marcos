@@ -3,6 +3,7 @@ import json
 import subscription
 import helpers
 import threadTransmission
+import syncPeople
 
 cmd_params = sys.argv
 if( len(cmd_params) > 2 ):
@@ -13,9 +14,11 @@ if( len(cmd_params) > 2 ):
             data = {
                 'message': "Mensaje recibido desde "+helpers.getSerialNumber()
             }
-            threadTransmission.publish(json.loads(data))
+            threadTransmission.publish(str(data))
         elif scrypt == 'create-subscription':
             subscription.create()
+        elif scrypt == 'sync-people':
+            syncPeople.execute()
         else:
             print('La acciòn no existe ')
     else:

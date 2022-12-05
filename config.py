@@ -1,5 +1,6 @@
 import json
 import os
+import helpers
 
 root_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -13,8 +14,12 @@ file_credentials = open(file_credential_path)
 credentialsObject = json.load(file_credentials)
 
 project_id = credentialsObject['project_id']
-thread_topic_id = pubsubObject['thread_topic_id']
-thread_topic_path = 'projects/'+project_id+'/topics/'+thread_topic_id
+
+PUB_THREAD_GAS_SEND = pubsubObject['PUB_THREAD_GAS_SEND']
+SUB_THREAD_PY_RECEIVE = helpers.getSubscriptionThreadName()
+
+PUB_THREAD_PY_REQUEST = pubsubObject['PUB_THREAD_PY_REQUEST']
+SUB_THREAD_GAS_PROCESS = pubsubObject['SUB_THREAD_GAS_PROCESS']
 
 courses_topic_name = pubsubObject['courses_topic_name']
 courses_subscriptor_name = pubsubObject['courses_subscriptor_name']

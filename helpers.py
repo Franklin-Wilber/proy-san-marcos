@@ -12,6 +12,6 @@ def getSerialNumber():
         print('No se pudo abrir el archivo de serial number BIOS')
         return None
 
-def getSubscriptionThreadName():    
+def getSubscriptionThreadName():
     serial_number = getSerialNumber()
-    return "SM_THREAD_SUB_"+serial_number
+    return "SUB_THREAD_PY_RECEIVE_"+serial_number
