@@ -21,6 +21,8 @@ SUB_THREAD_PY_RECEIVE = helpers.getSubscriptionThreadName()
 PUB_THREAD_PY_REQUEST = pubsubObject['PUB_THREAD_PY_REQUEST']
 SUB_THREAD_GAS_PROCESS = pubsubObject['SUB_THREAD_GAS_PROCESS']
 
+DB_PATH_KOLIBRI = pubsubObject['DB_PATH_KOLIBRI']
+
 courses_topic_name = pubsubObject['courses_topic_name']
 courses_subscriptor_name = pubsubObject['courses_subscriptor_name']
 

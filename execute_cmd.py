@@ -14,7 +14,7 @@ if( len(cmd_params) > 2 ):
             data = {
                 'message': "Mensaje recibido desde "+helpers.getSerialNumber()
             }
-            threadTransmission.publish(str(data))
+            threadTransmission.publish(helpers.getSubscriptionThreadName(),'INFO',str(data))
         elif scrypt == 'create-subscription':
             subscription.create()
         elif scrypt == 'sync-people':

@@ -9,5 +9,7 @@
 
     "courses_topic_name": "demo-san-marcos",
     "courses_subscriptor_name": "demo-san-marcos-sub-2",
-    "file_credential_path": "credenciales_json.json"
+    "file_credential_path": "credenciales_json.json",
+
+    "DB_PATH_KOLIBRI": "file:/home/franklin/.kolibri/db.sqlite3?mode=rw"
 }
