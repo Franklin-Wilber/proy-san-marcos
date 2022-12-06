@@ -15,7 +15,7 @@ def create():
         subscriber = pubsub_v1.SubscriberClient()
 
         PROJECT_ID = config.project_id
-        PUB_THREAD_PY_REQUEST = config.PUB_THREAD_PY_REQUEST
+        PUB_THREAD_PY_REQUEST = config.PUB_THREAD_GAS_SEND
         SUB_THREAD_PY_RECEIVE = config.SUB_THREAD_PY_RECEIVE
 
         topic_path = publisher.topic_path(PROJECT_ID,PUB_THREAD_PY_REQUEST)
@@ -38,4 +38,5 @@ def create():
                 print(subscription)
         else:
             print("Subscription exists")
+
 
