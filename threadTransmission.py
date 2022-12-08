@@ -5,6 +5,8 @@ import helpers
 import datetime
 import json
 import base64
+import dao.MonitorProcessDAO
+import codecs
 
 def publish(status,action,data):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = config.file_credential_path
@@ -30,14 +32,50 @@ def sub(subscription):
     subscriber = pubsub_v1.SubscriberClient()
 
     def callback(message):
-        print(f'Received message: {message}')
-        print(f'data: {message.data}')
-        if message.attributes:
-            print("Attributes:")
-            for key in message.attributes:
-                value = message.attributes.get(key)
-                print(f"{key}: {value}")
-        message.ack()           
+        attributes = message.attributes
+        data = message.data
+        data = codecs.decode(data,'utf-8')
+        # print( attributes.get('status') )
+        action = attributes.get('action')
+        device_id = attributes.get('device_id')
+        school_id = attributes.get('school_id')
+        datetime = attributes.get('datetime')        
+        subscription = attributes.get('subscription')
+        num_parts = attributes.get('num_parts')
+        num_total_items = attributes.get('num_total_items')
+        part_num_total_items = attributes.get('part_num_total_items')
+
+        gas_monitor_process_id = attributes.get('gas_monitor_process_id')
+        gas_monitor_process_item_id = attributes.get('gas_monitor_process_item_id')
+        status = attributes.get('status')
+        
+        resultData = json.loads(data,encoding='utf-8')
+        # num_parts = resultData['num_parts']
+        # num_total_items = resultData['num_total_items']
+        # part_num_total_items = resultData['part_num_total_items']
+        list_data = resultData['list_data']
+
+        print('data ==> ')
+        # print(resultData)
+        # message.ack()
+        # return False
+        # print(device_id)
+        # print(school_id)
+        # print(process_python_id)
+        if( device_id == helpers.getSerialNumber() ):
+            # params = ( num_items,'PENDING',python_monitor_process_id)
+            # dao.MonitorProcessDAO.changeStateEvent(params)
+            for item in list_data :            
+                student_id = item['id']
+                campus_name = item['data']['campus_name']
+                grade_name = item['data']['grade_name']
+                level_name = item['data']['level_name']
+                section_name = item['data']['section_name']
+                study_group_code = item['data']['study_group_code']
+                updated_at = item['data']['updated_at']
+                print( student_id + " " + campus_name + " " + grade_name + " " + level_name + " " + section_name + " " + study_group_code + " " + updated_at )
+
+        # message.ack()
         print("************ ************ ************ ************ ************")
 
     subscription_path = subscriber.subscription_path(config.project_id,subscription)

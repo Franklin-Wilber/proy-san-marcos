@@ -1,0 +1,11 @@
+import dao.DBManager
+
+def insert(params):
+    sql = "INSERT INTO monitor_process_item(monitor_process_id,num_items,state,created_at,updated_at) VALUES(?,?,?,DATETIME('now'),DATETIME('now'))"
+    result = dao.DBManager.insertUpdateDelete(dao.DBManager.DB_LOCAL,sql,params)
+    return result
+
+def update(params):
+    sql = "UPDATE monitor_process_item SET updated_at = DATETIME('now'), state = ? WHERE id = ?"
+    result = dao.DBManager.insertUpdateDelete(dao.DBManager.DB_LOCAL,sql,params)
+    return result    
