@@ -7,6 +7,8 @@ import threadTransmission
 import syncPeople
 import dao.DBManager
 import dao.MonitorProcessDAO
+import dao.kolibri.ChannelDAO as channelDAO
+import dao.kolibri.UserDAO as userDAO
 
 cmd_params = sys.argv
 if( len(cmd_params) > 2 ):
@@ -37,7 +39,11 @@ if( len(cmd_params) > 2 ):
                     line = p[0]+"\t"+p[1]+"\t"+p[2]+"\t"+p[3]+"\t"+p[4]+"\t"+p[5]+"\t"+p[6]
                     print(line)
             else:
-                print('No hay procesos actualmente')
+                print('No hay procesos actualmente')        
+        elif scrypt == 'kolibri-super-admin':
+            superAdmin = userDAO.getSuperAdmin()
+            print(superAdmin)
+
         else:
             print('La acciòn no existe ')
     else:

@@ -53,10 +53,10 @@ def createTablesIfNotExists():
     try:
         conn = sqlite3.connect(DB_LOCAL, uri=True)
 
-        sql = "CREATE TABLE IF NOT EXISTS monitor_process( id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT, command VARCHAR(255),action VARCHAR(255),mode VARCHAR(255), num_items INTEGER,state VARCHAR(255),runned_at DATETIME,updated_at DATETIME)"
+        sql = "CREATE TABLE IF NOT EXISTS monitor_process( id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT, command VARCHAR(255),action VARCHAR(255),mode VARCHAR(255), num_items INTEGER,gas_monitor_process_id VARCHAR(255),gas_monitor_process_item_id VARCHAR(255),state VARCHAR(255),created_at DATETIME,updated_at DATETIME)"
         conn.execute(sql)
 
-        sql = "CREATE TABLE IF NOT EXISTS monitor_process_item( id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT,monitor_process_id INTEGER,num_items INTEGER,state VARCHAR(255),created_at DATETIME,updated_at DATETIME)"
+        sql = "CREATE TABLE IF NOT EXISTS monitor_process_item( id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT,monitor_process_id INTEGER,num_items INTEGER,gas_monitor_process_id VARCHAR(255),gas_monitor_process_item_id VARCHAR(255),state VARCHAR(255),created_at DATETIME,updated_at DATETIME)"
         conn.execute(sql)
 
         sql = "CREATE TABLE IF NOT EXISTS academic_period( code VARCHAR(255) NOT NULL PRIMARY KEY,name VARCHAR(255),domain VARCHAR(255),school_id VARCHAR(255),state VARCHAR(255),created_at DATETIME,updated_at DATETIME,monitor_process_id INTEGER,monitor_process_item_id INTEGER)"

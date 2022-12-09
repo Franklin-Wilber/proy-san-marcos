@@ -6,6 +6,7 @@ import datetime
 import json
 import base64
 import dao.MonitorProcessDAO
+import dao.MonitorProcessItemDAO
 import codecs
 
 def publish(status,action,data):
@@ -47,36 +48,71 @@ def sub(subscription):
 
         gas_monitor_process_id = attributes.get('gas_monitor_process_id')
         gas_monitor_process_item_id = attributes.get('gas_monitor_process_item_id')
+
+        python_monitor_process_id = attributes.get('python_monitor_process_id')
+        python_monitor_process_item_id = attributes.get('python_monitor_process_item_id')
+
+        print(python_monitor_process_id)
+        print(python_monitor_process_item_id)
+        
         status = attributes.get('status')
         
         resultData = json.loads(data,encoding='utf-8')
-        # num_parts = resultData['num_parts']
-        # num_total_items = resultData['num_total_items']
-        # part_num_total_items = resultData['part_num_total_items']
-        list_data = resultData['list_data']
 
-        print('data ==> ')
-        # print(resultData)
-        # message.ack()
-        # return False
-        # print(device_id)
-        # print(school_id)
-        # print(process_python_id)
         if( device_id == helpers.getSerialNumber() ):
-            # params = ( num_items,'PENDING',python_monitor_process_id)
-            # dao.MonitorProcessDAO.changeStateEvent(params)
-            for item in list_data :            
-                student_id = item['id']
-                campus_name = item['data']['campus_name']
-                grade_name = item['data']['grade_name']
-                level_name = item['data']['level_name']
-                section_name = item['data']['section_name']
-                study_group_code = item['data']['study_group_code']
-                updated_at = item['data']['updated_at']
-                print( student_id + " " + campus_name + " " + grade_name + " " + level_name + " " + section_name + " " + study_group_code + " " + updated_at )
+            if(action == 'sync-people'):
+                list_data = resultData['list_data']
+                print('data ==> ')
+                # message.ack()
+                print('***********************')
+                print(python_monitor_process_id)
+                monitorProcess = None
+                if(python_monitor_process_id == None):
+                    python_monitor_process_id = 0
+                else:
+                    python_monitor_process_id = python_monitor_process_id
 
-        # message.ack()
-        print("************ ************ ************ ************ ************")
+                if( int(python_monitor_process_id) > 0):
+                    monitorProcess = dao.MonitorProcessDAO.find(python_monitor_process_id)
+                else:
+                    params = ('python3 execute_cmd.py --action sync-people',
+                            'sync-people', 'GAS',gas_monitor_process_id,0,0, 'PENDING')
+                    result = dao.MonitorProcessDAO.insert(params)
+                    if (result == True):
+                        monitorProcess = dao.MonitorProcessDAO.lastInserted()
+                        print('monitorProcess => Proceso creado')
+                    else:
+                        print('monitorProcess => No se pudo crear el proceso')
+                
+                print(monitorProcess)
+                print('***********************')
+                if(monitorProcess):
+                    
+                    paramsItem = ( python_monitor_process_id,part_num_total_items,gas_monitor_process_id,gas_monitor_process_item_id,'PENDING' )
+                    resultItemState = dao.MonitorProcessItemDAO.insert(paramsItem)
+                    if(resultItemState):
+                        params = ( num_total_items,gas_monitor_process_id,gas_monitor_process_item_id,'PENDING',python_monitor_process_id)
+                        dao.MonitorProcessDAO.changeState(params)
+
+                        for item in list_data :            
+                            student_id = item['id']
+                            campus_name = item['data']['campus_name']
+                            grade_name = item['data']['grade_name']
+                            level_name = item['data']['level_name']
+                            section_name = item['data']['section_name']
+                            study_group_code = item['data']['study_group_code']
+                            updated_at = item['data']['updated_at']
+                            print( student_id + " " + campus_name + " " + grade_name + " " + level_name + " " + section_name + " " + study_group_code + " " + updated_at )
+                    
+            elif(action == 'sync-courses'):
+                # message.ack()
+                print("************ ************ ************ ************ ************")
+            elif(action == 'sync-studyGroup'):
+                # message.ack()
+                print("************ ************ ************ ************ ************")
+            message.ack()
+        else:
+            print("No hay data por procesar")
 
     subscription_path = subscriber.subscription_path(config.project_id,subscription)
     print(subscription_path)
