@@ -13,6 +13,10 @@ pubsubObject = json.load(file_params_pubsub)
 DB_LOCAL = os.path.dirname(os.path.abspath(__file__))+'localDB.sqlite3'
 DB_KOLIBRI = pubsubObject["DB_PATH_KOLIBRI"]
 
+def connect():
+    conn = sqlite3.connect(DB_LOCAL,uri=True)
+    return conn
+    
 def executeResult(DB_PATH, sql):
     conn = None
     list_data = []

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sanmarcos-370720",
+  "private_key_id": "e401bdb6a4018d787b246e8ac3e1374cbb2bb6c4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYv6Zjrut+zRPv\nrU2FJtje74tK+PXcZjvuwwArOAsLS0IlpH7ndVKB5h7ubr6NoubLB6cxKp5mLAn1\nlonZKi0Gg2xXHV9NvZCcdGDan+bDKdjnY2Mn+HeeHZTX1q7zuHR9Hy/TGEcfwsIK\nvg8+x8qiCLQAzcpJ1bWuh/5TmhMRFdNwg+/7cJnUExxKEqtJRVEDWGTdoo4tSOt9\nnLQ0vy0dEaacuvQnVZ5/Vxw4Mknhb2PpGUBd7ccLx7Zcr4HeXjWhHpQsjFTLdxsA\nPGuOX3MHqN5yxQ78jZZaAfqoFXK2i7kLYcIJqBBebRJMXhgOLXJL3qGuwfOvdXd9\nthjbO8AxAgMBAAECggEAAf2Vl7wFI+WagaSd7gN+saJxzSsW5/Kk6YMPMvZpbI3B\nAmM9up6yVqjQPyiTda3JsJLmC06sxHuyTjf3FWBcqD8H/U9S3x4G8FblxlA6YG+3\nkx1vrU/r+k7jfW12bxzSLg19pRLHoXAqk8ptzansT5tkms7JBS9SIzOSx34GX41n\nTZtc6KEGmzj36woNOt2F/lV8+LM9b0EwNMqPGEKMwrACo0bq9VzOAT+Gq2UNUDs/\ntos05G33ECOLzh9bvtiYutjwEhZBYXRD8pOLbKYUjpHjO8X2nXuzfoyWStB0n+Dj\n5v+LuzdhQyf6Ie31RJ8+glJO1D7XiX7M0c5rF0UEgQKBgQD5jX6v5v1qjQ7UK1YZ\nqWCOcRtevGk1HJ54TAhR7jSrT62xRCX/UOv8F7tNAO4TfCxONORbQ9WjT5ZMikIu\nSV5xvuoKoHniSid2Ofq+n4xicW6mMtj9FVs7X0S/Lq+8SqGIgU3XbiLBHAE9eCv1\nqvin3eNNSpQO5mdi/rJr2aquQQKBgQDeWTGVye/5a3UmJJkLhOIbyxT3KbGpPlZb\nK7mLBoT4DS6nHwgEMKG6oGDGlVTRhe7x2eIWb7Nxr+sLOBD6YwkyVe6aqA8O8K/4\nohsuobrkgCIqW5d5p6/W6Xp39539T5IGenf8XDRYVfAl5TlVja584kh238X9vKFF\nvKPpiWp18QKBgBrxsBAF/K6YdFVsKGu04fv/MllUNnfJk0Kh0vQlqAInJDXTida7\nQf+CAHMb+piX+6CmDVHdTR/I5A13kBW3Tj8xwctL8F0CbKhTMkOKrnmijbPcIZmR\nyLvsWVvbCpZl6HL4oxLzjUUUZP3iD70CrL5TMsuRldLWBaumnFUQt2EBAoGBAIEE\nqG0OPB0yaUu0uMmiVcFi2cuBegGGln1YpdUx9z4oCAYZT4F+5plwLjeMtybM3JWh\npDr4nds+BNkBs3hWtyNqEYXUNsioiLNw/OzWE6g7YZfKhd6lmrbNy66JFDfEUCtK\nLQ1WQ1lupGaY1+f4ymLUus+fkTdmmP3qNAJzJj9BAoGBAJU4o7nOJmNYMfO+ugGy\nh3PYsuhd9bByUK/N8mUgUgIBQbTrXf2Q07ge8oGah2UYQ03a/utBTSWeM24AxtkD\ne+9RNdCzR2MPy2Uf/KYPiNuVJx9m8zj102Joy9ZgmcFurHUvBqyswtr8qDCfGmsj\nwXwbCowq44J9zuXga1eeti4Y\n-----END PRIVATE KEY-----\n",
+  "client_email": "accountsanmarcos@sanmarcos-370720.iam.gserviceaccount.com",
+  "client_id": "112234148161059246226",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/accountsanmarcos%40sanmarcos-370720.iam.gserviceaccount.com"
+}

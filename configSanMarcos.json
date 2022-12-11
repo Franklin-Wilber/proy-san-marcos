@@ -1,0 +1,10 @@
+{
+    "project_id": "sanmarcos-370720",
+    "thread_topic_id": "PubSub-BigQuery", 
+
+
+    "courses_topic_name": "PubSub-BigQuery",
+    "courses_subscriptor_name": "sendBigQuery",
+    "file_credential_path": "credenciales_json2.json"
+
+}
