@@ -4,7 +4,7 @@ import subscription
 import helpers
 import config
 import threadTransmission
-import syncPeople
+import syncProcess
 import dao.DBManager
 import dao.MonitorProcessDAO
 import dao.kolibri.ChannelDAO as channelDAO
@@ -26,17 +26,21 @@ if( len(cmd_params) > 2 ):
             dao.DBManager.createTablesIfNotExists()
         elif scrypt == 'receive-subscriptions':
             threadTransmission.sub( helpers.getSubscriptionThreadName() )
-        elif scrypt == 'sync-people':
-            syncPeople.execute()
+        elif scrypt == 'sync-people-students':
+            syncProcess.executeCommand('sync-people-students','COMMAND')
+        elif scrypt == 'sync-people-teachers':
+            syncProcess.executeCommand('sync-people-teachers','COMMAND')
+        elif scrypt == 'sync-courses':
+            syncProcess.executeCommand('sync-courses','COMMAND')
         elif scrypt == 'list-process':
             state = 'ALL'
             list_process = dao.MonitorProcessDAO.getAll(state)
             if( len(list_process) > 0 ):
-                line = "PROCESS ID\t\t\t\tCOMMAND\t\t\t\t\t\tACTION\t\tMODE\tSTATE\tCREATED_AT\t\tUPDATED_AT"
+                line = "PROCESS ID\t\t\t\tCOMMAND\t\t\tACTION\t\tMODE\t\tSTATE\t\tCREATED_AT\t\t\tUPDATED_AT"
                 print(line)
                 print("********************************************************************************************************************************************************************")
                 for p in list_process:
-                    line = p[0]+"\t"+p[1]+"\t"+p[2]+"\t"+p[3]+"\t"+p[4]+"\t"+p[5]+"\t"+p[6]
+                    line = str(p[0])+"\t\t"+str(p[1])+"\t"+str(p[2])+"\t"+str(p[3])+"\t\t"+str(p[7])+"\t\t"+str(p[8])+"\t\t"+str(p[9])
                     print(line)
             else:
                 print('No hay procesos actualmente')        

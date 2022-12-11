@@ -6,7 +6,7 @@ def insert(params):
     return result
 
 def changeState(params):
-    sql = "UPDATE monitor_process_item SET updated_at = DATETIME('now'),num_items=?,gas_monitor_process_item_id=?,gas_monitor_process_item_item_id=?,state = ? WHERE id = ?"
+    sql = "UPDATE monitor_process_item SET updated_at = DATETIME('now'),state = ? WHERE id = ?"
     result = dao.DBManager.insertUpdateDelete(dao.DBManager.DB_LOCAL,sql,params)
     return result
 
