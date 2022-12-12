@@ -9,15 +9,13 @@ import dao.DBManager
 import dao.MonitorProcessDAO
 import dao.kolibri.ChannelDAO as channelDAO
 import dao.kolibri.UserDAO as userDAO
-import metadataPublish
+import dao.metadataPublish as metadataPublish
 
 cmd_params = sys.argv
 if( len(cmd_params) > 2 ):
     action = cmd_params[1]
     scrypt = cmd_params[2]
-    option = cmd_params[3]
-    val1 = ''
-    val2 = ''
+
     if action == '--action':
         if scrypt == 'test-publish':
             data = {
@@ -27,7 +25,22 @@ if( len(cmd_params) > 2 ):
         elif scrypt == 'create-subscription':
             subscription.create()
         elif scrypt == 'test-publish-metadata':
-            metadataPublish.publishCourse(option,val1,val2)
+            option = ''
+            input1 = ''
+            input2 = ''
+            try:
+                option = cmd_params[3]
+            except:
+                print('')
+            try:
+                input1 = cmd_params[4]
+            except:
+                print('')
+            try:
+                input2 = cmd_params[5]
+            except:
+                print('')
+            metadataPublish.publishMetaData(option,input1,input2)
         elif scrypt == 'create-database':
             dao.DBManager.createTablesIfNotExists()
         elif scrypt == 'receive-subscriptions':

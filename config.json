@@ -1,6 +1,8 @@
 {
     "project_id": "pubsub-368620",
 
+    "PUB_METADA": "PubSub-BigQuery", 
+    
     "PUB_THREAD_GAS_SEND": "PUB_THREAD_GAS_SEND", 
     "SUB_THREAD_PY_RECEIVE_": "SUB_THREAD_PY_RECEIVE_<< SERIAL_NUMBER >>",
 

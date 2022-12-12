@@ -27,5 +27,9 @@ DIRECTORY_PATH_FILES_IMPORT = root_path+pubsubObject['DIRECTORY_PATH_FILES_IMPOR
 courses_topic_name = pubsubObject['courses_topic_name']
 courses_subscriptor_name = pubsubObject['courses_subscriptor_name']
 
+metadata_topic_name = pubsubObject['PUB_METADA']
+
 courses_subscription_path = 'projects/'+project_id+'/subscriptions/'+courses_subscriptor_name
 courses_topic_path = 'projects/'+project_id+'/topics/'+courses_topic_name
+
+metadata_topic_path = 'projects/'+project_id+'/topics/'+metadata_topic_name
