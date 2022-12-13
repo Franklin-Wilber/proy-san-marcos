@@ -27,6 +27,36 @@ def listCourse(id_device):
     finally:
         print('Consulta realizada')
 
+def listUser(id_device):
+    list_item = []
+    try:
+        query = "SELECT id,full_name FROM kolibriauth_facilityuser"
+        result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query )    
+        for row in result:
+            print(row[0]+"\t"+row[1])
+            list_item.append({"device_id":id_device,"user_id":row[0],"user_name":row[1]})
+        return list_item
+    except Error as e:
+        print(e)
+    finally:
+        print('Consulta realizada')
+
+def listLesson(id_device,start,end):
+    list_item = []
+    try:
+        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',SUBSTRING(l.date_created, 1, 10)) as anio, l.id, l.title, l.collection_id, course.name from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id INNER JOIN kolibriauth_collection as course ON course.id = l.collection_id where anio>='"+start+"' and anio<='"+end+"' ORDER BY anio"
+        result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)     
+        
+        for row in result:
+            print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+row[3]+"\t"+row[4]+"\t"+row[5]+"\t"+row[6])
+            list_item.append({ "device_id": id_device,"teacher_id": row[0],"teacher_name": row[1],"date_create": row[2], "lesson_id": row[3],"lesson_name": row[4],"course_id": row[5],"course_name": row[6]})
+         
+        return list_item
+    except Error as e:
+        print(e)
+    finally:
+        print('Consulta realizada')
+
 def listDataLesson(id_device,start,end):
     list_item = []
     try:
@@ -121,7 +151,6 @@ def publishMetaData(option,input1,input2):
     date_time = datetime.datetime.now()
     date = date_time.strftime("%Y/%m/%d")
     id_device = helpers.getSerialNumber()
-    print(f'Device id {id_device}')
 
     attributes = {}
 
@@ -131,17 +160,22 @@ def publishMetaData(option,input1,input2):
             'table': 'course',
         }
         list_item = listCourse(id_device)
+    elif option == 'lesson-data':
+        attributes = {
+            'table': 'lesson-data',
+        }
+        list_item = listDataLesson(id_device,input1,input2)
     elif option == 'lesson':
         attributes = {
             'table': 'lesson',
         }
-        list_item = listDataLesson(id_device,input1,input2)
+        list_item = listLesson(id_device,input1,input2)
     elif option == 'channel':
         attributes = {
             'table': 'channel',
         }
         list_item = frecuencyChannel(id_device,input1,input2)
-    elif option == 'teacher':
+    elif option == 'teacher-lesson':
         attributes = {
             'table': 'teacher',
         }
@@ -152,6 +186,12 @@ def publishMetaData(option,input1,input2):
             'table': 'node',
         }
         list_item = node(id_device)
+
+    elif option == 'user':
+        attributes = {
+            'table': 'user',
+        }
+        list_item = listUser(id_device)
     
     data = json.dumps(list_item)
     data = data.encode('utf-8')
@@ -165,8 +205,8 @@ def publishMetaData(option,input1,input2):
             sub_list_item = list_item[i:i+range]
             sub_data = json.dumps(sub_list_item)
             sub_data = sub_data.encode('utf-8')
-            future = publisher.publish(config.metadata_topic_path, sub_data, **attributes)
-            print(f'published message id {future.result()}')
+            #future = publisher.publish(config.metadata_topic_path, sub_data, **attributes)
+            #print(f'published message id {future.result()}')
     else:
         print('2')
         future = publisher.publish(config.metadata_topic_path, data, **attributes)
