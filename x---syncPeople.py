@@ -4,7 +4,7 @@ import json
 import dao.MonitorProcessDAO
 
 
-def execute():
+def xxxxxxxxxxexecute():
     print('Solicitando sincronizaciòn...')
     params = ('python3 execute_cmd.py --action sync-people',
               'sync-people', 'COMMAND','0','0','0', 'PENDING')

@@ -1,6 +1,7 @@
 import json
 import os
 import helpers
+import logging
 
 root_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,6 +15,8 @@ file_credentials = open(file_credential_path)
 credentialsObject = json.load(file_credentials)
 
 project_id = credentialsObject['project_id']
+
+DEBUG = pubsubObject['debug']
 
 PUB_THREAD_GAS_SEND = pubsubObject['PUB_THREAD_GAS_SEND']
 SUB_THREAD_PY_RECEIVE = helpers.getSubscriptionThreadName()
@@ -33,3 +36,11 @@ courses_subscription_path = 'projects/'+project_id+'/subscriptions/'+courses_sub
 courses_topic_path = 'projects/'+project_id+'/topics/'+courses_topic_name
 
 metadata_topic_path = 'projects/'+project_id+'/topics/'+metadata_topic_name
+
+if( DEBUG ):
+    logging.basicConfig(filename="log.txt",level=logging.DEBUG, format="%(asctime)s %(message)s")
+else:
+    logging.basicConfig(filename="log.txt",level=logging.ERROR, format="%(asctime)s %(message)s")
+
+def showError(message):
+    logging.error(message)

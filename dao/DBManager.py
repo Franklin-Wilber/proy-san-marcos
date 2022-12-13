@@ -25,6 +25,7 @@ def executeResult(DB_PATH, sql):
         return list_data
     except Error as e:
         print(e)
+        config.showError(e)
         list_data = []
     finally:
         if conn:
@@ -43,6 +44,7 @@ def insertUpdateDelete(DB_PATH, sql, params):
         cursor.close()       
     except Error as e:
         print(e)
+        config.showError(e)
         is_registered = False
     finally:
         if conn:
@@ -81,6 +83,7 @@ def createTablesIfNotExists():
         
     except Error as e:
         print(e)
+        config.showError(e)
     finally:
         if conn:
             conn.close()

@@ -20,22 +20,34 @@ import syncProcess
 
 
 def publish(status, action, data):
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = config.file_credential_path
-    PROJECT_ID = config.project_id
-    PUB_THREAD_PY_REQUEST = config.PUB_THREAD_PY_REQUEST
+    try:
+        config.showError("MODE : Publish")
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = config.file_credential_path
+        PROJECT_ID = config.project_id
+        PUB_THREAD_PY_REQUEST = config.PUB_THREAD_PY_REQUEST
 
-    publisher = pubsub_v1.PublisherClient()
-    topic_path = publisher.topic_path(PROJECT_ID, PUB_THREAD_PY_REQUEST)
-    date = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    data = data.encode('utf-8')
-    attributes = {
-        'status': status,
-        'action': action,
-        'datetime': date,
-        'device_id': helpers.getSerialNumber()
-    }
-    future = publisher.publish(topic_path, data, **attributes)
-    print(f'published message id {future.result()}')
+        config.showError(PUB_THREAD_PY_REQUEST)
+
+        publisher = pubsub_v1.PublisherClient()
+        topic_path = publisher.topic_path(PROJECT_ID, PUB_THREAD_PY_REQUEST)
+        date = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        data = data.encode('utf-8')
+        attributes = {
+            'status': status,
+            'action': action,
+            'datetime': date,
+            'device_id': helpers.getSerialNumber()
+        }
+        future = publisher.publish(topic_path, data, **attributes)
+        config.showError(attributes)
+        config.showError(data)
+        config.showError(f'PUBLISHED MESSAGE ID = {future.result()}')
+        print(f'PUBLISHED MESSAGE ID = {future.result()}')
+    except Exception as err:
+        print(err)
+        config.showError(err)
+    finally:
+        config.showError("-----------")
 
 
 def sub(subscription):
@@ -72,6 +84,9 @@ def sub(subscription):
             # message.ack()
             print('***********************  ' +
                   action+'  ***********************')
+
+            config.showError("ACTION = "+action)
+
             monitorProcess = None
             if (python_monitor_process_id == None):
                 python_monitor_process_id = 0
@@ -85,6 +100,7 @@ def sub(subscription):
                 params = ('python3 execute_cmd.py --action '+action,
                           action, 'GAS', gas_monitor_process_id, 0, 0, 'PENDING')
                 result = dao.MonitorProcessDAO.insert(params)
+
                 if (result == True):
                     monitorProcess = dao.MonitorProcessDAO.lastInserted()
                     print('monitorProcess => Proceso creado')
@@ -92,14 +108,16 @@ def sub(subscription):
                     print('monitorProcess => No se pudo crear el proceso')
 
             if (monitorProcess):
+                config.showError(monitorProcess)
+
                 userSuperAdmin = userKolibriDAO.getSuperAdmin()
                 if (userSuperAdmin == None):
                     print("No se encontrò una cuenta admin dentro de kolibrì")
+                    config.showError("No se encontrò una cuenta admin dentro de kolibrì")
                 else:
                     userSuperAdmin_id = userSuperAdmin["id"]
                     userSuperAdmin_facility_id = userSuperAdmin["facility_id"]
-                    userSuperAdmin_dataset_id = userSuperAdmin["dataset_id"]
-                    print(monitorProcess)
+                    userSuperAdmin_dataset_id = userSuperAdmin["dataset_id"]                    
                     paramsItem = (python_monitor_process_id, part_num_total_items,
                                   gas_monitor_process_id, gas_monitor_process_item_id, 'PENDING')
                     resultItemState = dao.MonitorProcessItemDAO.insert(
@@ -142,10 +160,6 @@ def sub(subscription):
                                 people_id = item['id']
                                 people_uuid = item['data']['uuid']
                                 study_group_code = item['data']['study_group_code']
-                                # campus_name = item['data']['campus_name']
-                                # grade_name = item['data']['grade_name']
-                                # level_name = item['data']['level_name']
-                                # section_name = item['data']['section_name']
                                 updated_at = item['data']['updated_at']
                                 user_type = "LEARNER"
 
@@ -191,7 +205,7 @@ def sub(subscription):
                                     list_users_array.append(row)
 
                             if len(list_users_array) > 1:
-
+                                config.showError("Se procesaràn "+str( len(list_users_array) )+" items")
                                 path_import_files_people = config.DIRECTORY_PATH_FILES_IMPORT + \
                                     "/files-people-"+str(uuid.uuid4())+".csv"
                                 fileImportPeople = open(
@@ -202,11 +216,12 @@ def sub(subscription):
 
                                 cmd = "kolibri manage bulkimportusers "+path_import_files_people
                                 print(cmd)
-
-                                cmd_import_teachers_and_students = os.system(
-                                    cmd)
-                                # print(cmd_import_teachers_and_students)
+                                config.showError(path_import_files_people)
+                                config.showError(cmd)
+                                os.system(cmd)
                                 # exit()
+                            else:
+                                config.showError("No se registroo el item de proceso")
 
                         elif (action == 'sync-people-teachers'):
                             list_data = resultData['list_data']
@@ -263,7 +278,6 @@ def sub(subscription):
                                 if (user != None):
                                     user_id = user[0]
 
-                                print(teacher_code)
                                 user_type = "CLASS_COACH"
 
                                 row = [
@@ -283,6 +297,7 @@ def sub(subscription):
                                     # print(row)
 
                             if len(list_users_array) > 1:
+                                config.showError("Se procesaràn "+str( len(list_users_array) )+" items")
                                 path_import_files_people = config.DIRECTORY_PATH_FILES_IMPORT + \
                                     "/files-people-teachers-" + \
                                     str(uuid.uuid4())+".csv"
@@ -294,17 +309,17 @@ def sub(subscription):
 
                                 cmd = "kolibri manage bulkimportusers "+path_import_files_people
                                 print(cmd)
-                                cmd_import_teachers_and_students = os.system(
-                                    cmd)
+                                config.showError(path_import_files_people)
+                                config.showError(cmd)
+                                os.system(cmd)
                                 # print(cmd_import_teachers_and_students)
-
-                                # exit()
-                                # print("*******************")
-                                # exit()
+                            else:
+                                config.showError("No se registroo el item de proceso")
 
                         elif (action == 'sync-courses'):
                             num_courses_new = 0
                             list_data = resultData['list_data']
+                            config.showError("Se procesaràn "+str(list_data)+" cursos")
                             for item in list_data:
                                 course_id = item['id']
                                 course_uuid = item['data']['uuid']
@@ -352,6 +367,7 @@ def sub(subscription):
                             print(str(len(list_data))+" cursos")
 
                             print("Se crearon "+str(num_courses_new)+" cursos")
+                            config.showError("Se crearon "+str(num_courses_new)+" cursos")
                         else:
                             print('Opciòn no vàlida')
 
@@ -364,28 +380,32 @@ def sub(subscription):
                         dao.MonitorProcessDAO.changeState(
                             python_monitor_process_id)
 
-                        message.ack()                        
-                    else:
-                        print("No se registroo el item de proceso")
-        
+                        message.ack()
+                    else:                        
+                        config.showError("No se registroo el item de proceso")
+            else:
+                config.showError("No se creò el proceso")
             print("********     FIN     ***********")
+            config.showError("********     FIN     ***********")
         else:
             print("No hay data por procesar")
+            config.showError("No hay data por procesar")
 
         message.ack()
 
     subscription_path = subscriber.subscription_path(
         config.project_id, subscription)
     print(subscription_path)
-
+    config.showError(subscription_path)
     streaming_pull_future = subscriber.subscribe(
         subscription_path, callback=callback)
     print(f'Listening for messages on {subscription_path}')
-
+    config.showError(f'Listening for messages on {subscription_path}')
     with subscriber:
         try:
             streaming_pull_future.result()
-        except TimeoutError:
+        except TimeoutError as err:
+            config.showError(err)
             streaming_pull_future.cancel()
             streaming_pull_future.result()
 
@@ -396,4 +416,5 @@ def sendInfo(action, python_monitor_process_id, gas_monitor_process_id, result_m
                       "python_monitor_process_id": python_monitor_process_id, "gas_monitor_process_id": gas_monitor_process_id,
                       "state": "SUCCESS", "created_at": date, "updated_at": date, "result_message": result_message}
     processStr = json.dumps(result_message)
+    config.showError("Result : "+processStr)
     publish('INFO', action, processStr)
