@@ -29,6 +29,7 @@ def executeResult(DB_PATH, sql):
     finally:
         if conn:
             conn.close()
+            # print("Conexiòn cerrada")
         return list_data
 
 def insertUpdateDelete(DB_PATH, sql, params):
@@ -46,6 +47,7 @@ def insertUpdateDelete(DB_PATH, sql, params):
     finally:
         if conn:
             conn.close()
+            # print("Conexiòn cerrada")
     return is_registered
 
 def createTablesIfNotExists():
@@ -71,6 +73,9 @@ def createTablesIfNotExists():
         sql = "CREATE TABLE IF NOT EXISTS enrollment_students( people_id VARCHAR(255) NOT NULL,course_id VARCHAR(255) NOT NULL,state VARCHAR(255),created_at DATETIME,updated_at DATETIME,monitor_process_id INTEGER,monitor_process_item_id INTEGER)"
         conn.execute(sql)
 
+        sql = "CREATE TABLE IF NOT EXISTS import_teachers( id INTEGER NOT NULL PRIMARY KEY  AUTOINCREMENT,course_code VARCHAR(255),study_group_code VARCHAR(255),teacher_code VARCHAR(255),name VARCHAR(255),lastname VARCHAR(255),fullname VARCHAR(255),state VARCHAR(255),created_at DATETIME,updated_at DATETIME,monitor_process_id INTEGER,monitor_process_item_id INTEGER)"
+        conn.execute(sql)
+
         # sql = "CREATE TABLE IF NOT EXISTS local_people( id INTEGER NOT NULL PRIMARY KEY, gid VARCHAR(255), name VARCHAR(255), lastname VARCHAR(255),username VARCHAR(255), email VARCHAR(255), state VARCHAR(255), created_at DATETIME, updated_at DATETIME, deleted_at DATETIME, local_organization_id INTEGER )"
         # conn.execute(sql)
         
@@ -79,3 +84,4 @@ def createTablesIfNotExists():
     finally:
         if conn:
             conn.close()
+            # print("Conexiòn cerrada")

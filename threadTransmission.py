@@ -7,13 +7,16 @@ import json
 import uuid
 import csv
 import codecs
+import dao.DBManager
 import dao.MonitorProcessDAO
 import dao.MonitorProcessItemDAO
 import dao.kolibri.UserDAO as userKolibriDAO
 import dao.StudyGroupDAO as studyGroupDAO
 import dao.CourseDAO as courseDAO
 import dao.PeopleDAO as peopleDAO
+import dao.ImportTeachersDAO as importTeachersDAO
 import dao.kolibri.KolibriAuthCollectionDAO as kolibriAuthCollectionDAO
+import syncProcess
 
 
 def publish(status, action, data):
@@ -61,18 +64,14 @@ def sub(subscription):
         python_monitor_process_item_id = attributes.get(
             'python_monitor_process_item_id')
 
-        print(python_monitor_process_id)
-        print(python_monitor_process_item_id)
-
         status = attributes.get('status')
 
         resultData = json.loads(data, encoding='utf-8')
 
         if (device_id == helpers.getSerialNumber()):
-            print('data ==> ')
             # message.ack()
-            print('***********************')
-            print(python_monitor_process_id)
+            print('***********************  ' +
+                  action+'  ***********************')
             monitorProcess = None
             if (python_monitor_process_id == None):
                 python_monitor_process_id = 0
@@ -83,8 +82,8 @@ def sub(subscription):
                 monitorProcess = dao.MonitorProcessDAO.find(
                     python_monitor_process_id)
             else:
-                params = ('python3 execute_cmd.py --action sync-people',
-                          'sync-people', 'GAS', gas_monitor_process_id, 0, 0, 'PENDING')
+                params = ('python3 execute_cmd.py --action '+action,
+                          action, 'GAS', gas_monitor_process_id, 0, 0, 'PENDING')
                 result = dao.MonitorProcessDAO.insert(params)
                 if (result == True):
                     monitorProcess = dao.MonitorProcessDAO.lastInserted()
@@ -94,7 +93,9 @@ def sub(subscription):
 
             if (monitorProcess):
                 userSuperAdmin = userKolibriDAO.getSuperAdmin()
-                if (userSuperAdmin):
+                if (userSuperAdmin == None):
+                    print("No se encontrò una cuenta admin dentro de kolibrì")
+                else:
                     userSuperAdmin_id = userSuperAdmin["id"]
                     userSuperAdmin_facility_id = userSuperAdmin["facility_id"]
                     userSuperAdmin_dataset_id = userSuperAdmin["dataset_id"]
@@ -112,57 +113,67 @@ def sub(subscription):
                                   gas_monitor_process_item_id, 'PENDING', python_monitor_process_id)
                         dao.MonitorProcessDAO.update(params)
 
-                        if (action == 'sync-people-students'):
+                        if (action == 'test-publish'):
+                            result_message = resultData['list_data']
+                            sendInfo(action, python_monitor_process_id,
+                                     gas_monitor_process_id, result_message)
+                        elif (action == 'create-database'):
+                            dao.DBManager.createTablesIfNotExists()
+                            result_message = "Base de datos generada con èxito"
+                            sendInfo(action, python_monitor_process_id,
+                                     gas_monitor_process_id, result_message)
+                        elif (action == 'sync-people-students'):
                             list_data = resultData['list_data']
                             list_users_array = []
                             list_users_array.append([
-                                    "UUID",
-                                    "USERNAME",
-                                    "PASSWORD",
-                                    "FULL_NAME",
-                                    "USER_TYPE",
-                                    "IDENTIFIER",
-                                    "BIRTH_YEAR",
-                                    "GENDER",
-                                    "ENROLLED_IN",
-                                    "ASSIGNED_TO"
-                                ])
+                                "UUID",
+                                "USERNAME",
+                                "PASSWORD",
+                                "FULL_NAME",
+                                "USER_TYPE",
+                                "IDENTIFIER",
+                                "BIRTH_YEAR",
+                                "GENDER",
+                                "ENROLLED_IN",
+                                "ASSIGNED_TO"
+                            ])
 
                             for item in list_data:
                                 people_id = item['id']
                                 people_uuid = item['data']['uuid']
                                 study_group_code = item['data']['study_group_code']
-                                campus_name = item['data']['campus_name']
-                                grade_name = item['data']['grade_name']
-                                level_name = item['data']['level_name']
-                                section_name = item['data']['section_name']
+                                # campus_name = item['data']['campus_name']
+                                # grade_name = item['data']['grade_name']
+                                # level_name = item['data']['level_name']
+                                # section_name = item['data']['section_name']
                                 updated_at = item['data']['updated_at']
                                 user_type = "LEARNER"
 
-                                existsUser = userKolibriDAO.findById(people_uuid)
+                                existsUser = userKolibriDAO.findById(
+                                    people_uuid)
                                 if (existsUser != None):
                                     print(people_id+" existe")
                                     continue
 
                                 course_index = 0
                                 list_student_courses_str = ""
-                                list_courses = courseDAO.getCoursesByStudyGroupCode(study_group_code)
+                                list_courses = courseDAO.getCoursesByStudyGroupCode(
+                                    study_group_code)
                                 for course in list_courses:
-                                    if( course_index > 0 ):
+                                    if (course_index > 0):
                                         list_student_courses_str += ","
                                     list_student_courses_str += course[3]
                                     course_index = course_index + 1
 
-                                print("==> "+people_id)
+                                # print("==> "+people_id)
                                 # print(people_uuid+" "+people_id + " " + campus_name + " " + grade_name + " " +
                                 #       level_name + " " + section_name + " " + study_group_code + " " + user_type)
                                 # print(list_student_courses_str)
                                 user_id = None
                                 user = peopleDAO.findByUsername(people_id)
-                                if(user != None):
+                                if (user != None):
                                     user_id = user[0]
-
-                                print(user_id)
+                                    # print(user_id)
 
                                 row = [
                                     user_id,
@@ -176,25 +187,119 @@ def sub(subscription):
                                     list_student_courses_str,
                                     ""
                                 ]
-                                list_users_array.append(row)
-                                
-                            print(list_users_array)
-                            
-                            if len(list_users_array) > 1 :
+                                if (len(list_courses) > 0):
+                                    list_users_array.append(row)
 
-                                path_import_files_people = config.DIRECTORY_PATH_FILES_IMPORT+"/files-people-"+str(uuid.uuid4())+".csv"
-                                fileImportPeople = open(path_import_files_people, 'w')
+                            if len(list_users_array) > 1:
+
+                                path_import_files_people = config.DIRECTORY_PATH_FILES_IMPORT + \
+                                    "/files-people-"+str(uuid.uuid4())+".csv"
+                                fileImportPeople = open(
+                                    path_import_files_people, 'w')
                                 with fileImportPeople:
                                     writer = csv.writer(fileImportPeople)
                                     writer.writerows(list_users_array)
 
                                 cmd = "kolibri manage bulkimportusers "+path_import_files_people
                                 print(cmd)
-                                # exit()
-                                cmd_import_teachers_and_students = os.system(cmd)
-                                print(cmd_import_teachers_and_students)
 
-                                print("*******************")
+                                cmd_import_teachers_and_students = os.system(
+                                    cmd)
+                                # print(cmd_import_teachers_and_students)
+                                # exit()
+
+                        elif (action == 'sync-people-teachers'):
+                            list_data = resultData['list_data']
+                            list_users_array = []
+                            list_users_array.append([
+                                "UUID",
+                                "USERNAME",
+                                "PASSWORD",
+                                "FULL_NAME",
+                                "USER_TYPE",
+                                "IDENTIFIER",
+                                "BIRTH_YEAR",
+                                "GENDER",
+                                "ENROLLED_IN",
+                                "ASSIGNED_TO"
+                            ])
+
+                            for item in list_data:
+                                teacher_id = str(item['id'])
+                                course_code = item['data']['course_code']
+                                study_group_code = item['data']['study_group_code']
+                                teacher_code = item['data']['teacher_code']
+
+                                importTeachers = importTeachersDAO.findIfExists(
+                                    course_code, study_group_code, teacher_code)
+                                if (importTeachers == None):
+                                    importTeachersDAO.insert((course_code, study_group_code, teacher_code, "name - "+teacher_code, "lastname - " +
+                                                             teacher_code, "fullname - "+teacher_code, python_monitor_process_id, python_monitor_process_item_id, 'PROCCESED'))
+                                    importTeachers = importTeachersDAO.findIfExists(
+                                        course_code, study_group_code, teacher_code)
+
+                            list_teachers = importTeachersDAO.getTeachers(
+                                python_monitor_process_id, python_monitor_process_item_id)
+                            for item in list_teachers:
+                                # print(item)
+                                teacher_code = str(item[0])
+                                name = str(item[0])
+                                lastname = str(item[1])
+                                fullname = str(item[2])
+                                list_courses = importTeachersDAO.getCoursesByTeachers(
+                                    teacher_code)
+                                # print("----------------------")
+
+                                course_index = 0
+                                list_teachers_courses_str = ""
+                                for course in list_courses:
+                                    if (course_index > 0):
+                                        list_teachers_courses_str += ","
+                                    list_teachers_courses_str += course[6]
+                                    course_index = course_index + 1
+
+                                user_id = None
+                                user = peopleDAO.findByUsername(teacher_code)
+                                if (user != None):
+                                    user_id = user[0]
+
+                                print(teacher_code)
+                                user_type = "CLASS_COACH"
+
+                                row = [
+                                    user_id,
+                                    teacher_code,
+                                    teacher_code,
+                                    fullname,
+                                    user_type,
+                                    user_id,
+                                    None,
+                                    'NOT_SPECIFIED',
+                                    "",
+                                    list_teachers_courses_str
+                                ]
+                                if (len(list_courses) > 0):
+                                    list_users_array.append(row)
+                                    # print(row)
+
+                            if len(list_users_array) > 1:
+                                path_import_files_people = config.DIRECTORY_PATH_FILES_IMPORT + \
+                                    "/files-people-teachers-" + \
+                                    str(uuid.uuid4())+".csv"
+                                fileImportPeople = open(
+                                    path_import_files_people, 'w')
+                                with fileImportPeople:
+                                    writer = csv.writer(fileImportPeople)
+                                    writer.writerows(list_users_array)
+
+                                cmd = "kolibri manage bulkimportusers "+path_import_files_people
+                                print(cmd)
+                                cmd_import_teachers_and_students = os.system(
+                                    cmd)
+                                # print(cmd_import_teachers_and_students)
+
+                                # exit()
+                                # print("*******************")
                                 # exit()
 
                         elif (action == 'sync-courses'):
@@ -210,55 +315,63 @@ def sub(subscription):
                                 level_name = item['data']['level_name']
                                 grade_name = item['data']['grade_name']
                                 section_name = item['data']['section_name']
-                                
+
                                 # collection_id = str(uuid.uuid4()).replace("-","")
                                 collection_id = course_uuid
-                                collection_name = course_name + " - "+campus_name+" - "+level_name+" - "+grade_name+" - "+section_name
+                                collection_name = course_name + " - "+campus_name + \
+                                    " - "+level_name+" - "+grade_name+" - "+section_name
                                 parent_id = userSuperAdmin_facility_id
-                                _morango_source_id = str(uuid.uuid4()).replace("-","")
+                                _morango_source_id = str(
+                                    uuid.uuid4()).replace("-", "")
                                 _morango_partition = userSuperAdmin_dataset_id+":allusers-ro"
-                                collection = { "id": collection_id,"name": collection_name,"kind": "classroom","dataset_id": userSuperAdmin_dataset_id,"parent_id": parent_id,"_morango_dirty_bit": 1,"_morango_source_id": _morango_source_id,"_morango_partition": _morango_partition }
+                                collection = {"id": collection_id, "name": collection_name, "kind": "classroom", "dataset_id": userSuperAdmin_dataset_id,
+                                              "parent_id": parent_id, "_morango_dirty_bit": 1, "_morango_source_id": _morango_source_id, "_morango_partition": _morango_partition}
 
-                                existsCourse = kolibriAuthCollectionDAO.findById(course_uuid)
-                                if existsCourse == None :
+                                existsCourse = kolibriAuthCollectionDAO.findById(
+                                    course_uuid)
+                                if existsCourse == None:
                                     num_courses_new = num_courses_new + 1
                                 else:
                                     continue
-                                
-                                studGroup = studyGroupDAO.findById(study_group_code)
-                                if( studGroup == None ):
-                                    studyGroupDAO.insert( (study_group_code,0,campus_name,level_name,grade_name,section_name,python_monitor_process_id,python_monitor_process_item_id) )
-                                    studGroup = studyGroupDAO.findById(study_group_code)
+
+                                studGroup = studyGroupDAO.findById(
+                                    study_group_code)
+                                if (studGroup == None):
+                                    studyGroupDAO.insert((study_group_code, 0, campus_name, level_name, grade_name,
+                                                         section_name, python_monitor_process_id, python_monitor_process_item_id))
+                                    studGroup = studyGroupDAO.findById(
+                                        study_group_code)
 
                                 course = courseDAO.findById(course_code)
-                                if( course == None ):
-                                    courseDAO.insert( (course_code,course_uuid,course_name,collection_name,study_group_code,python_monitor_process_id,python_monitor_process_item_id,'PROCESSED') )
+                                if (course == None):
+                                    courseDAO.insert((course_code, course_uuid, course_name, collection_name, study_group_code,
+                                                     python_monitor_process_id, python_monitor_process_item_id, 'PROCESSED'))
 
                                 kolibriAuthCollectionDAO.insert(collection)
-                                print(course_id + " " + collection_id)
-                            print(str( len(list_data))+" cursos")
+                                # print(course_id + " " + collection_id)
+                            print(str(len(list_data))+" cursos")
 
                             print("Se crearon "+str(num_courses_new)+" cursos")
                         else:
                             print('Opciòn no vàlida')
-                                
-                        params = ('PROCESSED',python_monitor_process_item_id)
-                        dao.MonitorProcessItemDAO.changeState( params )                        
+
+                        params = ('PROCESSED', python_monitor_process_item_id)
+                        dao.MonitorProcessItemDAO.changeState(params)
 
                         params = (num_total_items, gas_monitor_process_id,
                                   gas_monitor_process_item_id, 'PENDING', python_monitor_process_id)
                         dao.MonitorProcessDAO.update(params)
-                        dao.MonitorProcessDAO.changeState( python_monitor_process_id )
-                        
-                        message.ack()
-                        print("************ ************ ************ ************ ************")
+                        dao.MonitorProcessDAO.changeState(
+                            python_monitor_process_id)
+
+                        message.ack()                        
                     else:
                         print("No se registroo el item de proceso")
-                else:
-                    print("No se encontrò una cuenta admin dentro de kolibrì")
+        
+            print("********     FIN     ***********")
         else:
             print("No hay data por procesar")
-        
+
         message.ack()
 
     subscription_path = subscriber.subscription_path(
@@ -275,3 +388,12 @@ def sub(subscription):
         except TimeoutError:
             streaming_pull_future.cancel()
             streaming_pull_future.result()
+
+
+def sendInfo(action, python_monitor_process_id, gas_monitor_process_id, result_message):
+    date = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    result_message = {"action": "info-device", "action_source": action, "mode": "GAS",
+                      "python_monitor_process_id": python_monitor_process_id, "gas_monitor_process_id": gas_monitor_process_id,
+                      "state": "SUCCESS", "created_at": date, "updated_at": date, "result_message": result_message}
+    processStr = json.dumps(result_message)
+    publish('INFO', action, processStr)
