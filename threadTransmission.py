@@ -17,7 +17,7 @@ import dao.PeopleDAO as peopleDAO
 import dao.ImportTeachersDAO as importTeachersDAO
 import dao.kolibri.KolibriAuthCollectionDAO as kolibriAuthCollectionDAO
 import syncProcess
-
+import dao.metadataPublish as metadataPublish
 
 def publish(status, action, data):
     try:
@@ -60,6 +60,9 @@ def sub(subscription):
         data = codecs.decode(data, 'utf-8')
         # print( attributes.get('status') )
         action = attributes.get('action')
+        option = attributes.get('option')
+        input1 = attributes.get('input1')
+        input2 = attributes.get('input2')
         device_id = attributes.get('device_id')
         school_id = attributes.get('school_id')
         datetime = attributes.get('datetime')
@@ -78,7 +81,7 @@ def sub(subscription):
 
         status = attributes.get('status')
 
-        resultData = json.loads(data, encoding='utf-8')
+        resultData = json.loads(data)
 
         if (device_id == helpers.getSerialNumber()):
             # message.ack()
@@ -138,6 +141,11 @@ def sub(subscription):
                         elif (action == 'create-database'):
                             dao.DBManager.createTablesIfNotExists()
                             result_message = "Base de datos generada con èxito"
+                            sendInfo(action, python_monitor_process_id,
+                                     gas_monitor_process_id, result_message)
+                        elif (action == 'metaData-Bigquery'):
+                            metadataPublish.publishMetaData(option,input1,input2)
+                            result_message = "Meta data subida con exito al pub sub"
                             sendInfo(action, python_monitor_process_id,
                                      gas_monitor_process_id, result_message)
                         elif (action == 'sync-people-students'):

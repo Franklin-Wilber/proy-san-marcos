@@ -43,3 +43,360 @@
 2022-12-13 15:52:18,251 Se crearon 0 cursos
 2022-12-13 15:52:19,104 ********     FIN     ***********
 2022-12-13 15:52:20,013 ********     FIN     ***********
+2022-12-14 16:52:55,344 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 16:52:55,348 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 16:53:25,464 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 84, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 16:53:25,469 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 16:56:59,660 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 16:56:59,669 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 16:57:07,638 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 84, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 16:57:07,660 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:05:24,514 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:05:24,519 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:05:38,179 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 84, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 17:05:38,182 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:06:49,541 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:06:49,546 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:06:55,561 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 84, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 17:06:55,568 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:07:02,154 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:07:02,159 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:07:05,809 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 84, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 17:07:05,812 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:07:27,855 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:07:27,864 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:07:37,929 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 81, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 17:07:37,933 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:08:31,730 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:08:31,734 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:08:35,027 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 81, in callback
+    resultData = json.loads(data, encoding='utf-8')
+  File "/usr/lib/python3.10/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+TypeError: JSONDecoder.__init__() got an unexpected keyword argument 'encoding'
+2022-12-14 17:08:35,038 Error in queue callback worker: Cannot invoke RPC on closed channel!
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/helper_threads.py", line 118, in __call__
+    self._callback(items)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 190, in dispatch_callback
+    self.nack(nack_requests)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 405, in nack
+    self.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/dispatcher.py", line 347, in modify_ack_deadline
+    _, requests_to_retry = self._manager.send_unary_modack(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 716, in send_unary_modack
+    self._client.modify_ack_deadline(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/pubsub_v1/services/subscriber/client.py", line 1196, in modify_ack_deadline
+    rpc(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/gapic_v1/method.py", line 154, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 283, in retry_wrapped_func
+    return retry_target(
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/retry.py", line 190, in retry_target
+    return target()
+  File "/home/andree/.local/lib/python3.10/site-packages/google/api_core/grpc_helpers.py", line 72, in error_remapped_callable
+    return callable_(*args, **kwargs)
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 944, in __call__
+    state, call, = self._blocking(request, timeout, metadata, credentials,
+  File "/home/andree/.local/lib/python3.10/site-packages/grpc/_channel.py", line 926, in _blocking
+    call = self._channel.segregated_call(
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 496, in grpc._cython.cygrpc.Channel.segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 353, in grpc._cython.cygrpc._segregated_call
+  File "src/python/grpcio/grpc/_cython/_cygrpc/channel.pyx.pxi", line 357, in grpc._cython.cygrpc._segregated_call
+ValueError: Cannot invoke RPC on closed channel!
+2022-12-14 17:10:55,746 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:10:55,754 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:10:58,587 ACTION = sync-courses
+2022-12-14 17:10:58,601 (107, 'python3 execute_cmd.py --action sync-courses', 'sync-courses', 'GAS', '0f6047f5-daa2-47a2-87b7-3751e33c2d6c', '0', 'PENDING', '2022-12-14 22:10:58', '2022-12-14 22:10:58')
+2022-12-14 17:10:58,630 Se procesaràn [{'id': 'CO-MIR-M-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-M-2-B', 'course_name': 'COURSE 3', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'B', 'study_group_code': 'MIR-M-2-B', 'updated_at': '2022-12-14T16:16:28.059Z', 'uuid': '3554e645dede4c0cb7be836a8dba7c12'}}, {'id': 'CO-MIR-T-2-A', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-A', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'A', 'study_group_code': 'MIR-T-2-A', 'updated_at': '2022-12-14T16:16:28.061Z', 'uuid': '4a9c206c3f7343eab17d13e3a2134142'}}, {'id': 'CO-MIR-T-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-B', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'MIR-T-2-B', 'updated_at': '2022-12-14T16:16:28.063Z', 'uuid': 'add55e6937944142a85ceac20c7d48ea'}}, {'id': 'MA-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-A', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.048Z', 'uuid': '05d8d616a1a347ed87611956f2b7fff3'}}, {'id': 'MA-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-B', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.051Z', 'uuid': '3c47f43718de417594db17ab420c8d7e'}}, {'id': 'MA-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-C', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.054Z', 'uuid': '4d79dfe0c0dd4572aeeb9f3fe4844e6b'}}] cursos
+2022-12-14 17:10:58,784 Se crearon 6 cursos
+2022-12-14 17:10:58,793 ********     FIN     ***********
+2022-12-14 17:16:47,645 ACTION = metaData-course
+2022-12-14 17:16:47,655 (108, 'python3 execute_cmd.py --action metaData-course', 'metaData-course', 'GAS', '676d8b7a-6349-41db-9c0e-2cf6fefca1d6', '0', 'PENDING', '2022-12-14 22:16:47', '2022-12-14 22:16:47')
+2022-12-14 17:16:47,674 ********     FIN     ***********
+2022-12-14 17:17:06,869 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:17:06,903 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:19:21,219 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:19:21,228 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:19:31,271 ACTION = metaData-Bigquery
+2022-12-14 17:19:31,284 (109, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '7b1974b0-54e8-4f9b-b37e-950a78cbb6b7', '0', 'PENDING', '2022-12-14 22:19:31', '2022-12-14 22:19:31')
+2022-12-14 17:19:31,309 ********     FIN     ***********
+2022-12-14 17:21:22,825 ACTION = metaData-Bigquery
+2022-12-14 17:21:22,837 (110, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', 'd212b079-518f-4573-9d52-399644001b70', '0', 'PENDING', '2022-12-14 22:21:22', '2022-12-14 22:21:22')
+2022-12-14 17:21:22,857 ********     FIN     ***********
+2022-12-14 17:21:51,686 ACTION = metaData-Bigquery
+2022-12-14 17:21:51,700 (111, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '2f451fac-41f4-48f2-818f-1bed3dbec5c7', '0', 'PENDING', '2022-12-14 22:21:51', '2022-12-14 22:21:51')
+2022-12-14 17:21:51,724 ********     FIN     ***********
+2022-12-14 17:23:35,101 ACTION = metaData-Bigquery
+2022-12-14 17:23:35,109 (112, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '8009c9bc-7b08-4084-ace8-e0af3748e90c', '0', 'PENDING', '2022-12-14 22:23:35', '2022-12-14 22:23:35')
+2022-12-14 17:23:35,129 ********     FIN     ***********
+2022-12-14 17:24:22,194 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:24:22,197 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:24:24,384 ACTION = metaData-Bigquery
+2022-12-14 17:24:24,395 (113, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '30cb0b16-c02d-48ab-8351-56aa7457af1e', '0', 'PENDING', '2022-12-14 22:24:24', '2022-12-14 22:24:24')
+2022-12-14 17:24:25,043 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "30cb0b16-c02d-48ab-8351-56aa7457af1e", "state": "SUCCESS", "created_at": "14/12/2022 17:24:25", "updated_at": "14/12/2022 17:24:25", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-14 17:24:25,043 MODE : Publish
+2022-12-14 17:24:25,043 PUB_THREAD_PY_REQUEST
+2022-12-14 17:24:25,144 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '14/12/2022 17:24:25', 'device_id': '0'}
+2022-12-14 17:24:25,144 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "30cb0b16-c02d-48ab-8351-56aa7457af1e", "state": "SUCCESS", "created_at": "14/12/2022 17:24:25", "updated_at": "14/12/2022 17:24:25", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-14 17:24:25,517 PUBLISHED MESSAGE ID = 6587019912215162
+2022-12-14 17:24:25,518 -----------
+2022-12-14 17:24:25,532 ********     FIN     ***********
+2022-12-14 17:26:02,135 ACTION = sync-people-students
+2022-12-14 17:26:02,146 (114, 'python3 execute_cmd.py --action sync-people-students', 'sync-people-students', 'GAS', '4cc11fa2-c077-4bf6-824f-7eeadc54df70', '0', 'PENDING', '2022-12-14 22:26:02', '2022-12-14 22:26:02')
+2022-12-14 17:26:02,167 Se procesaràn 5 items
+2022-12-14 17:26:02,171 Top-level exception occurred in callback while processing a message
+Traceback (most recent call last):
+  File "/home/andree/.local/lib/python3.10/site-packages/google/cloud/pubsub_v1/subscriber/_protocol/streaming_pull_manager.py", line 126, in _wrap_callback_errors
+    callback(message)
+  File "/home/andree/Documentos/GitHub/proy-san-marcos/threadTransmission.py", line 219, in callback
+    fileImportPeople = open(
+FileNotFoundError: [Errno 2] No such file or directory: '/home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-47fe922d-b487-4e70-9b41-e26467dfcd62.csv'
+2022-12-14 17:26:36,495 projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:26:36,498 Listening for messages on projects/pubsub-368620/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-14 17:26:40,623 ACTION = metaData-Bigquery
+2022-12-14 17:26:40,633 (115, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '08a5f74b-46bd-4335-ae58-1d3ebdb9fddb', '0', 'PENDING', '2022-12-14 22:26:40', '2022-12-14 22:26:40')
+2022-12-14 17:26:41,080 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "08a5f74b-46bd-4335-ae58-1d3ebdb9fddb", "state": "SUCCESS", "created_at": "14/12/2022 17:26:41", "updated_at": "14/12/2022 17:26:41", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-14 17:26:41,080 MODE : Publish
+2022-12-14 17:26:41,080 PUB_THREAD_PY_REQUEST
+2022-12-14 17:26:41,138 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '14/12/2022 17:26:41', 'device_id': '0'}
+2022-12-14 17:26:41,138 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "08a5f74b-46bd-4335-ae58-1d3ebdb9fddb", "state": "SUCCESS", "created_at": "14/12/2022 17:26:41", "updated_at": "14/12/2022 17:26:41", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-14 17:26:41,641 PUBLISHED MESSAGE ID = 6586965702205840
+2022-12-14 17:26:41,642 -----------
+2022-12-14 17:26:41,656 ********     FIN     ***********
+2022-12-14 17:27:49,648 ACTION = metaData-Bigquery
+2022-12-14 17:27:49,681 (116, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '223af425-4740-4100-a923-75a82b70d66c', '0', 'PENDING', '2022-12-14 22:27:49', '2022-12-14 22:27:49')
+2022-12-14 17:27:50,492 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "223af425-4740-4100-a923-75a82b70d66c", "state": "SUCCESS", "created_at": "14/12/2022 17:27:50", "updated_at": "14/12/2022 17:27:50", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-14 17:27:50,492 MODE : Publish
+2022-12-14 17:27:50,492 PUB_THREAD_PY_REQUEST
+2022-12-14 17:27:50,606 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '14/12/2022 17:27:50', 'device_id': '0'}
+2022-12-14 17:27:50,606 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "223af425-4740-4100-a923-75a82b70d66c", "state": "SUCCESS", "created_at": "14/12/2022 17:27:50", "updated_at": "14/12/2022 17:27:50", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-14 17:27:50,807 PUBLISHED MESSAGE ID = 6587020082191191
+2022-12-14 17:27:50,808 -----------
+2022-12-14 17:27:50,817 ********     FIN     ***********

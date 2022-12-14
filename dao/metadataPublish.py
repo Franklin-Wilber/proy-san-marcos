@@ -19,7 +19,7 @@ def listCourse(id_device):
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query )     
         
         for row in result:
-            print(row[0]+"\t"+row[1]+"\t"+row[2])
+            #print(row[0]+"\t"+row[1]+"\t"+row[2])
             list_users.append({"device_id":id_device,"course_id":row[0],"course_name":row[1]})
         return list_users
     except Error as e:
@@ -33,7 +33,7 @@ def listUser(id_device):
         query = "SELECT id,full_name FROM kolibriauth_facilityuser"
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query )    
         for row in result:
-            print(row[0]+"\t"+row[1])
+            #print(row[0]+"\t"+row[1])
             list_item.append({"device_id":id_device,"user_id":row[0],"user_name":row[1]})
         return list_item
     except Error as e:
@@ -48,7 +48,7 @@ def listLesson(id_device,start,end):
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)     
         
         for row in result:
-            print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+row[3]+"\t"+row[4]+"\t"+row[5]+"\t"+row[6])
+            #print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+row[3]+"\t"+row[4]+"\t"+row[5]+"\t"+row[6])
             list_item.append({ "device_id": id_device,"teacher_id": row[0],"teacher_name": row[1],"date_create": row[2], "lesson_id": row[3],"lesson_name": row[4],"course_id": row[5],"course_name": row[6]})
          
         return list_item
@@ -64,7 +64,7 @@ def listDataLesson(id_device,start,end):
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)     
         
         for row in result:
-            print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+str(row[4]))
+            #print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+str(row[4]))
             list_item.append({ "device_id": id_device,"user_id": row[0],"full_name": row[1],"num_lesson": str(row[4]),"start_date": start,"end_date": end})
          
         return list_item
@@ -103,7 +103,7 @@ def frecuencyChannel(id_device,start,end):
         index = df2.index.tolist()
         cantidad = df2.values.tolist()
         for row in range(len(index)):
-            print(index[row][0]+"\t"+index[row][1]+"\t"+str(cantidad[row][0] ))
+            #print(index[row][0]+"\t"+index[row][1]+"\t"+str(cantidad[row][0] ))
             list_cant_channel.append({ "device_id": id_device,"channel_id":index[row][0],"channel_name":index[row][1],"cantidad": str(cantidad[row][0]),"start_date": start,"end_date": end})
         return list_cant_channel
     except Error as e:
@@ -118,7 +118,7 @@ def frecuencyLessonPerTeacher(id_device,start,end):
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)    
         
         for row in result:
-            print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+str( row[3]))
+            #print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+str( row[3]))
             list_item.append({ "device_id": id_device,"teacher_id": row[0],"teacher_name": row[1],"anio": row[2],"cantidad":str( row[3]),"start_date": input1,"end_date": input2 })
          
         return list_item
@@ -134,7 +134,7 @@ def node(id_device):
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query) 
         
         for row in result:
-            print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+ row[3])
+            #print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+ row[3])
             list_item.append({ "device_id": id_device,"node_id": row[0],"title": row[1],"channel_id": row[2],"description": ''})
         
         return list_item
@@ -205,8 +205,8 @@ def publishMetaData(option,input1,input2):
             sub_list_item = list_item[i:i+range]
             sub_data = json.dumps(sub_list_item)
             sub_data = sub_data.encode('utf-8')
-            #future = publisher.publish(config.metadata_topic_path, sub_data, **attributes)
-            #print(f'published message id {future.result()}')
+            future = publisher.publish(config.metadata_topic_path, sub_data, **attributes)
+            print(f'published message id {future.result()}')
     else:
         print('2')
         future = publisher.publish(config.metadata_topic_path, data, **attributes)
