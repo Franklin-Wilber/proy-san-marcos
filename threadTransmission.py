@@ -55,6 +55,8 @@ def sub(subscription):
     subscriber = pubsub_v1.SubscriberClient()
 
     def callback(message):
+        if not os.path.exists("import-csv"):
+            os.makedirs("import-csv")
         attributes = message.attributes
         data = message.data
         data = codecs.decode(data, 'utf-8')
