@@ -24,7 +24,7 @@ if( len(cmd_params) > 2 ):
             threadTransmission.publish('INFO','test-publish',str(data))
         elif scrypt == 'create-subscription':
             subscription.create()
-        elif scrypt == 'test-publish-metadata':
+        elif scrypt == 'publish-metadata':
             option = ''
             input1 = ''
             input2 = ''
