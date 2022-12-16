@@ -444,3 +444,125 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/andree/Documentos
 2022-12-15 18:06:12,402 Se procesaràn [{'id': 'CO-MIR-M-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-M-2-B', 'course_name': 'COURSE 3', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'B', 'study_group_code': 'MIR-M-2-B', 'updated_at': '2022-12-14T16:16:28.059Z', 'uuid': '3554e645dede4c0cb7be836a8dba7c12'}}, {'id': 'CO-MIR-T-2-A', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-A', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'A', 'study_group_code': 'MIR-T-2-A', 'updated_at': '2022-12-14T16:16:28.061Z', 'uuid': '4a9c206c3f7343eab17d13e3a2134142'}}, {'id': 'CO-MIR-T-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-B', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'MIR-T-2-B', 'updated_at': '2022-12-14T16:16:28.063Z', 'uuid': 'add55e6937944142a85ceac20c7d48ea'}}, {'id': 'MA-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-A', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.048Z', 'uuid': '05d8d616a1a347ed87611956f2b7fff3'}}, {'id': 'MA-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-B', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.051Z', 'uuid': '3c47f43718de417594db17ab420c8d7e'}}, {'id': 'MA-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-C', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.054Z', 'uuid': '4d79dfe0c0dd4572aeeb9f3fe4844e6b'}}] cursos
 2022-12-15 18:06:12,740 Se crearon 6 cursos
 2022-12-15 18:06:12,812 ********     FIN     ***********
+2022-12-15 23:06:22,235 ACTION = metaData-Bigquery
+2022-12-15 23:06:22,247 (124, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', 'ead99e34-2d60-4e3b-8087-7447eeed6c68', '0', 'PENDING', '2022-12-16 04:06:22', '2022-12-16 04:06:22')
+2022-12-15 23:06:22,709 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "ead99e34-2d60-4e3b-8087-7447eeed6c68", "state": "SUCCESS", "created_at": "15/12/2022 23:06:22", "updated_at": "15/12/2022 23:06:22", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-15 23:06:22,710 MODE : Publish
+2022-12-15 23:06:22,710 PUB_THREAD_PY_REQUEST
+2022-12-15 23:06:22,755 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '15/12/2022 23:06:22', 'device_id': '0'}
+2022-12-15 23:06:22,757 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "ead99e34-2d60-4e3b-8087-7447eeed6c68", "state": "SUCCESS", "created_at": "15/12/2022 23:06:22", "updated_at": "15/12/2022 23:06:22", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-15 23:06:23,263 PUBLISHED MESSAGE ID = 6463022876960761
+2022-12-15 23:06:23,263 -----------
+2022-12-15 23:06:23,277 ********     FIN     ***********
+2022-12-15 23:07:31,012 ACTION = metaData-Bigquery
+2022-12-15 23:07:31,031 (125, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '7939d4f1-59a1-4ddb-91b0-9b9b5fdc450d', '0', 'PENDING', '2022-12-16 04:07:31', '2022-12-16 04:07:31')
+2022-12-15 23:07:31,450 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "7939d4f1-59a1-4ddb-91b0-9b9b5fdc450d", "state": "SUCCESS", "created_at": "15/12/2022 23:07:31", "updated_at": "15/12/2022 23:07:31", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-15 23:07:31,450 MODE : Publish
+2022-12-15 23:07:31,451 PUB_THREAD_PY_REQUEST
+2022-12-15 23:07:31,504 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '15/12/2022 23:07:31', 'device_id': '0'}
+2022-12-15 23:07:31,504 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "7939d4f1-59a1-4ddb-91b0-9b9b5fdc450d", "state": "SUCCESS", "created_at": "15/12/2022 23:07:31", "updated_at": "15/12/2022 23:07:31", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-15 23:07:31,747 PUBLISHED MESSAGE ID = 6463030622389324
+2022-12-15 23:07:31,747 -----------
+2022-12-15 23:07:31,759 ********     FIN     ***********
+2022-12-15 23:08:07,472 ACTION = metaData-Bigquery
+2022-12-15 23:08:07,481 (126, 'python3 execute_cmd.py --action metaData-Bigquery', 'metaData-Bigquery', 'GAS', '9a53c0b1-4409-4929-8a50-29eff6dd3ef2', '0', 'PENDING', '2022-12-16 04:08:07', '2022-12-16 04:08:07')
+2022-12-15 23:08:07,761 Result : {"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "9a53c0b1-4409-4929-8a50-29eff6dd3ef2", "state": "SUCCESS", "created_at": "15/12/2022 23:08:07", "updated_at": "15/12/2022 23:08:07", "result_message": "Meta data subida con exito al pub sub"}
+2022-12-15 23:08:07,761 MODE : Publish
+2022-12-15 23:08:07,761 PUB_THREAD_PY_REQUEST
+2022-12-15 23:08:07,811 {'status': 'INFO', 'action': 'metaData-Bigquery', 'datetime': '15/12/2022 23:08:07', 'device_id': '0'}
+2022-12-15 23:08:07,811 b'{"action": "info-device", "action_source": "metaData-Bigquery", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "9a53c0b1-4409-4929-8a50-29eff6dd3ef2", "state": "SUCCESS", "created_at": "15/12/2022 23:08:07", "updated_at": "15/12/2022 23:08:07", "result_message": "Meta data subida con exito al pub sub"}'
+2022-12-15 23:08:08,674 PUBLISHED MESSAGE ID = 6463039906220307
+2022-12-15 23:08:08,674 -----------
+2022-12-15 23:08:08,686 ********     FIN     ***********
+2022-12-15 23:11:15,873 ACTION = create-database
+2022-12-15 23:11:15,879 (127, 'python3 execute_cmd.py --action create-database', 'create-database', 'GAS', '0fa5bd10-cce8-4d50-bf49-17fe14e0ce44', '0', 'PENDING', '2022-12-16 04:11:15', '2022-12-16 04:11:15')
+2022-12-15 23:11:15,888 Result : {"action": "info-device", "action_source": "create-database", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "0fa5bd10-cce8-4d50-bf49-17fe14e0ce44", "state": "SUCCESS", "created_at": "15/12/2022 23:11:15", "updated_at": "15/12/2022 23:11:15", "result_message": "Base de datos generada con \u00e8xito"}
+2022-12-15 23:11:15,888 MODE : Publish
+2022-12-15 23:11:15,888 PUB_THREAD_PY_REQUEST
+2022-12-15 23:11:15,935 {'status': 'INFO', 'action': 'create-database', 'datetime': '15/12/2022 23:11:15', 'device_id': '0'}
+2022-12-15 23:11:15,935 b'{"action": "info-device", "action_source": "create-database", "mode": "GAS", "python_monitor_process_id": "0", "gas_monitor_process_id": "0fa5bd10-cce8-4d50-bf49-17fe14e0ce44", "state": "SUCCESS", "created_at": "15/12/2022 23:11:15", "updated_at": "15/12/2022 23:11:15", "result_message": "Base de datos generada con \\u00e8xito"}'
+2022-12-15 23:11:16,384 PUBLISHED MESSAGE ID = 6463039441597101
+2022-12-15 23:11:16,385 -----------
+2022-12-15 23:11:16,397 ********     FIN     ***********
+2022-12-15 23:11:22,685 No hay data por procesar
+2022-12-15 23:11:47,944 ACTION = sync-courses
+2022-12-15 23:11:47,953 (128, 'python3 execute_cmd.py --action sync-courses', 'sync-courses', 'GAS', 'd24ac2dd-8db4-45a3-8571-4b3221e23afe', '0', 'PENDING', '2022-12-16 04:11:47', '2022-12-16 04:11:47')
+2022-12-15 23:11:47,961 Se procesaràn [{'id': 'AR-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'AR-LIN-M-1-A', 'course_name': 'ARTE', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.049Z', 'uuid': '61362704145440bea80335f172f99ce6'}}, {'id': 'AR-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'AR-LIN-M-1-B', 'course_name': 'ARTE', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.052Z', 'uuid': 'dd38e53154c34da49f26212d790b1f31'}}, {'id': 'AR-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'AR-LIN-M-1-C', 'course_name': 'ARTE', 'grade_name': '1ero', 'level_name': 'SECUNDARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.054Z', 'uuid': 'ca5610571b8843a69a959f69787c1fbd'}}, {'id': 'CI-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'CI-LIN-M-1-A', 'course_name': 'CTA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.050Z', 'uuid': 'bd2e2fe4b02b418c83f4e4556e2f4ae0'}}, {'id': 'CI-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'CI-LIN-M-1-B', 'course_name': 'CTA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.053Z', 'uuid': 'c78ebf71171d4b33a330ab8559ccb960'}}, {'id': 'CI-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'CI-LIN-M-1-C', 'course_name': 'CTA', 'grade_name': '1ero', 'level_name': 'SECUNDARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.055Z', 'uuid': 'dc416b28ad17418e8b8988e7baf19eb8'}}, {'id': 'CO-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'CO-LIN-M-1-A', 'course_name': 'COMUNICACION', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.046Z', 'uuid': '567036b2997e49239d48bceebcce9bf2'}}, {'id': 'CO-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'CO-LIN-M-1-B', 'course_name': 'COMUNICACION', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.050Z', 'uuid': '3b73779880c543ea82262ecbbc8e7f08'}}, {'id': 'CO-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'CO-LIN-M-1-C', 'course_name': 'COMUNICACION', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.053Z', 'uuid': 'fe86fae41e2f4148b59e4f9418831369'}}, {'id': 'CO-MIR-M-2-A', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-M-2-A', 'course_name': 'COURSE 3', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'A', 'study_group_code': 'MIR-M-2-A', 'updated_at': '2022-12-14T16:16:28.056Z', 'uuid': '4e36744031574ded81f21b279a53fb0d'}}] cursos
+2022-12-15 23:11:47,971 Se crearon 0 cursos
+2022-12-15 23:11:47,979 ********     FIN     ***********
+2022-12-15 23:11:48,654 ACTION = sync-courses
+2022-12-15 23:11:48,661 (129, 'python3 execute_cmd.py --action sync-courses', 'sync-courses', 'GAS', 'd24ac2dd-8db4-45a3-8571-4b3221e23afe', '0', 'PENDING', '2022-12-16 04:11:48', '2022-12-16 04:11:48')
+2022-12-15 23:11:48,668 Se procesaràn [{'id': 'CO-MIR-M-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-M-2-B', 'course_name': 'COURSE 3', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'B', 'study_group_code': 'MIR-M-2-B', 'updated_at': '2022-12-14T16:16:28.059Z', 'uuid': '3554e645dede4c0cb7be836a8dba7c12'}}, {'id': 'CO-MIR-T-2-A', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-A', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'SECUNDARIA', 'section_name': 'A', 'study_group_code': 'MIR-T-2-A', 'updated_at': '2022-12-14T16:16:28.061Z', 'uuid': '4a9c206c3f7343eab17d13e3a2134142'}}, {'id': 'CO-MIR-T-2-B', 'data': {'campus_name': 'MIRAFLORES', 'course_code': 'CO-MIR-T-2-B', 'course_name': 'COURSE 6', 'grade_name': '2do', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'MIR-T-2-B', 'updated_at': '2022-12-14T16:16:28.063Z', 'uuid': 'add55e6937944142a85ceac20c7d48ea'}}, {'id': 'MA-LIN-M-1-A', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-A', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'A', 'study_group_code': 'LIN-M-1-A', 'updated_at': '2022-12-14T16:16:28.048Z', 'uuid': '05d8d616a1a347ed87611956f2b7fff3'}}, {'id': 'MA-LIN-M-1-B', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-B', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'B', 'study_group_code': 'LIN-M-1-B', 'updated_at': '2022-12-14T16:16:28.051Z', 'uuid': '3c47f43718de417594db17ab420c8d7e'}}, {'id': 'MA-LIN-M-1-C', 'data': {'campus_name': 'LINCE', 'course_code': 'MA-LIN-M-1-C', 'course_name': 'MATEMATICA', 'grade_name': '1ero', 'level_name': 'PRIMARIA', 'section_name': 'C', 'study_group_code': 'LIN-M-1-C', 'updated_at': '2022-12-14T16:16:28.054Z', 'uuid': '4d79dfe0c0dd4572aeeb9f3fe4844e6b'}}] cursos
+2022-12-15 23:11:48,674 Se crearon 0 cursos
+2022-12-15 23:11:48,681 ********     FIN     ***********
+2022-12-15 23:12:01,986 No hay data por procesar
+2022-12-15 23:12:02,151 No hay data por procesar
+2022-12-15 23:12:35,387 No hay data por procesar
+2022-12-15 23:14:33,765 No hay data por procesar
+2022-12-15 23:15:26,443 No hay data por procesar
+2022-12-15 23:15:29,213 No hay data por procesar
+2022-12-15 23:15:54,900 No hay data por procesar
+2022-12-15 23:15:54,951 No hay data por procesar
+2022-12-15 23:15:54,954 No hay data por procesar
+2022-12-16 10:02:09,339 projects/sanmarcos-370720/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-16 10:02:09,341 Listening for messages on projects/sanmarcos-370720/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-16 10:02:22,026 No hay data por procesar
+2022-12-16 10:02:22,093 No hay data por procesar
+2022-12-16 10:02:45,711 ACTION = sync-people-teachers
+2022-12-16 10:02:45,722 (130, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', '57818f22-fc73-4932-a61d-d75fa69848d2', '0', 'PENDING', '2022-12-16 15:02:45', '2022-12-16 15:02:45')
+2022-12-16 10:02:45,722 unable to open database file
+2022-12-16 10:02:45,722 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:02:45,722 ********     FIN     ***********
+2022-12-16 10:02:45,789 ACTION = sync-people-teachers
+2022-12-16 10:02:45,828 (131, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', '57818f22-fc73-4932-a61d-d75fa69848d2', '0', 'PENDING', '2022-12-16 15:02:45', '2022-12-16 15:02:45')
+2022-12-16 10:02:45,829 unable to open database file
+2022-12-16 10:02:45,831 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:02:45,831 ********     FIN     ***********
+2022-12-16 10:03:04,911 ACTION = create-database
+2022-12-16 10:03:04,921 (132, 'python3 execute_cmd.py --action create-database', 'create-database', 'GAS', 'e9fcc559-de89-44e7-be6f-df25268c1019', '0', 'PENDING', '2022-12-16 15:03:04', '2022-12-16 15:03:04')
+2022-12-16 10:03:04,921 unable to open database file
+2022-12-16 10:03:04,921 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:03:04,921 ********     FIN     ***********
+2022-12-16 10:03:24,274 ACTION = sync-people-teachers
+2022-12-16 10:03:24,286 (133, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', '25919c25-97f2-479b-8c27-33e2d3fad208', '0', 'PENDING', '2022-12-16 15:03:24', '2022-12-16 15:03:24')
+2022-12-16 10:03:24,287 unable to open database file
+2022-12-16 10:03:24,287 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:03:24,287 ********     FIN     ***********
+2022-12-16 10:03:25,886 ACTION = sync-people-teachers
+2022-12-16 10:03:25,896 (134, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', '25919c25-97f2-479b-8c27-33e2d3fad208', '0', 'PENDING', '2022-12-16 15:03:25', '2022-12-16 15:03:25')
+2022-12-16 10:03:25,896 unable to open database file
+2022-12-16 10:03:25,896 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:03:25,896 ********     FIN     ***********
+2022-12-16 10:03:33,615 ACTION = create-database
+2022-12-16 10:03:33,624 (135, 'python3 execute_cmd.py --action create-database', 'create-database', 'GAS', '1320ca36-40f7-433f-bf07-6828a077c0c9', '0', 'PENDING', '2022-12-16 15:03:33', '2022-12-16 15:03:33')
+2022-12-16 10:03:33,624 unable to open database file
+2022-12-16 10:03:33,624 No se encontrò una cuenta admin dentro de kolibrì
+2022-12-16 10:03:33,624 ********     FIN     ***********
+2022-12-16 10:03:44,872 projects/sanmarcos-370720/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-16 10:03:44,876 Listening for messages on projects/sanmarcos-370720/subscriptions/SUB_THREAD_PY_RECEIVE_0
+2022-12-16 10:03:52,894 ACTION = sync-people-teachers
+2022-12-16 10:03:53,004 (136, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', 'aa6578b2-95b0-4842-afe2-14710e11af8c', '0', 'PENDING', '2022-12-16 15:03:52', '2022-12-16 15:03:52')
+2022-12-16 10:03:53,059 No se registroo el item de proceso
+2022-12-16 10:03:53,080 ********     FIN     ***********
+2022-12-16 10:03:53,245 ACTION = sync-people-teachers
+2022-12-16 10:03:53,282 (137, 'python3 execute_cmd.py --action sync-people-teachers', 'sync-people-teachers', 'GAS', 'aa6578b2-95b0-4842-afe2-14710e11af8c', '0', 'PENDING', '2022-12-16 15:03:53', '2022-12-16 15:03:53')
+2022-12-16 10:03:53,322 No se registroo el item de proceso
+2022-12-16 10:03:53,330 ********     FIN     ***********
+2022-12-16 10:04:06,960 ACTION = sync-people-students
+2022-12-16 10:04:06,970 (138, 'python3 execute_cmd.py --action sync-people-students', 'sync-people-students', 'GAS', '0df225b1-63ed-4417-ab66-0a0ed6eb3e91', '0', 'PENDING', '2022-12-16 15:04:06', '2022-12-16 15:04:06')
+2022-12-16 10:04:07,002 Se procesaràn 5 items
+2022-12-16 10:04:07,003 /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-610bcf8d-d518-472d-87dd-956d80e68eb9.csv
+2022-12-16 10:04:07,003 kolibri manage bulkimportusers /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-610bcf8d-d518-472d-87dd-956d80e68eb9.csv
+2022-12-16 10:04:08,833 ACTION = sync-people-students
+2022-12-16 10:04:08,868 ACTION = sync-people-students
+2022-12-16 10:04:08,881 (139, 'python3 execute_cmd.py --action sync-people-students', 'sync-people-students', 'GAS', '0df225b1-63ed-4417-ab66-0a0ed6eb3e91', '0', 'PENDING', '2022-12-16 15:04:08', '2022-12-16 15:04:08')
+2022-12-16 10:04:08,921 (140, 'python3 execute_cmd.py --action sync-people-students', 'sync-people-students', 'GAS', '0df225b1-63ed-4417-ab66-0a0ed6eb3e91', '0', 'PENDING', '2022-12-16 15:04:08', '2022-12-16 15:04:08')
+2022-12-16 10:04:09,173 Se procesaràn 11 items
+2022-12-16 10:04:09,185 /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-0e60c3f6-c4db-4bab-8789-b69e4f24c0be.csv
+2022-12-16 10:04:09,186 kolibri manage bulkimportusers /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-0e60c3f6-c4db-4bab-8789-b69e4f24c0be.csv
+2022-12-16 10:04:09,232 Se procesaràn 11 items
+2022-12-16 10:04:09,270 /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-e0898399-fbf5-4a4d-b43b-a91155915a93.csv
+2022-12-16 10:04:09,270 kolibri manage bulkimportusers /home/andree/Documentos/GitHub/proy-san-marcos/import-csv/files-people-e0898399-fbf5-4a4d-b43b-a91155915a93.csv
+2022-12-16 10:04:12,422 ********     FIN     ***********
+2022-12-16 10:04:14,189 ********     FIN     ***********
+2022-12-16 10:04:14,789 ********     FIN     ***********

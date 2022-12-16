@@ -9,6 +9,7 @@ import config
 import pandas as pd
 import sqlite3
 import sys
+import math
 from sqlite3 import Error
 
 
@@ -196,13 +197,13 @@ def publishMetaData(option,input1,input2):
     data = json.dumps(list_item)
     data = data.encode('utf-8')
     if sys.getsizeof(data) > 100000:
-        n= round(sys.getsizeof(data)/100000)
-        range= round(len(list_item)/n)
-        for i in range(0,len(list_item),range):
+        n = math.ceil(sys.getsizeof(data)/100000) #math.ceil()
+        range_pub = round(len(list_item)/n)
+        for i in range(0,len(list_item),range_pub):
             print('************************')
             sub_list_item = []
             sub_data = []
-            sub_list_item = list_item[i:i+range]
+            sub_list_item = list_item[i:i+range_pub]
             sub_data = json.dumps(sub_list_item)
             sub_data = sub_data.encode('utf-8')
             future = publisher.publish(config.metadata_topic_path, sub_data, **attributes)
