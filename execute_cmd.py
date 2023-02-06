@@ -12,6 +12,7 @@ import dao.kolibri.UserDAO as userDAO
 import dao.metadataPublish as metadataPublish
 
 cmd_params = sys.argv
+print(cmd_params)
 if( len(cmd_params) > 2 ):
     action = cmd_params[1]
     scrypt = cmd_params[2]
