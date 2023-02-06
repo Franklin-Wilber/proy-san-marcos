@@ -1,3 +1,4 @@
+#!/bin/bash
 cd /home/franklin/ 
 
 echo "Generando nùmero serial..." 

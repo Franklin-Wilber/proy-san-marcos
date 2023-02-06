@@ -16,11 +16,6 @@ def sync(user, action):
                   )
         b = dao.DBManager.insertUpdateDelete(
             dao.DBManager.DB_KOLIBRI, sql, params)
-    if (action == 'UPDATE'):
-        # sql = "UPDATE local_user SET name=?,state=?,updated_at=? WHERE id = ?"
-        # params = ( user["name"],user["state"],user["updated_at"], user["id"] )
-        # b = dao.DB.execute(sql,params)
-        b = False
     return b
 
 

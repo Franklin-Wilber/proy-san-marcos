@@ -15,7 +15,7 @@
     "courses_subscriptor_name": "demo-san-marcos-sub-2",
     "file_credential_path": "credenciales_json_sanMarcos.json",
 
-    "DB_PATH_KOLIBRI": "file:/home/franklin/.kolibri/db.sqlite3?mode=rw",
+    "DB_PATH_KOLIBRI": "file:/home/ubuntu/.kolibri/db.sqlite3?mode=rw",
 
     "DIRECTORY_PATH_FILES_IMPORT": "/import-csv"
 }
