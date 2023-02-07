@@ -45,7 +45,7 @@ def listUser(id_device):
 def listLesson(id_device,start,end):
     list_item = []
     try:
-        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',SUBSTRING(l.date_created, 1, 10)) as anio, l.id, l.title, l.collection_id, course.name from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id INNER JOIN kolibriauth_collection as course ON course.id = l.collection_id where anio>='"+start+"' and anio<='"+end+"' ORDER BY anio"
+        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',substr(l.date_created, 1, 10)) as anio, l.id, l.title, l.collection_id, course.name from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id INNER JOIN kolibriauth_collection as course ON course.id = l.collection_id where anio>='"+start+"' and anio<='"+end+"' ORDER BY anio"
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)     
         
         for row in result:
@@ -61,7 +61,7 @@ def listLesson(id_device,start,end):
 def listDataLesson(id_device,start,end):
     list_item = []
     try:
-        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',SUBSTRING(l.date_created, 1, 10)) as anio, strftime('%m',SUBSTRING(l.date_created, 1, 10)) as mes, count(teacher.id) as numero_lesson from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id where anio>='"+start+"' and anio<='"+end+"' Group By anio,teacher.id ORDER BY anio"
+        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',substr(l.date_created, 1, 10)) as anio, strftime('%m',substr(l.date_created, 1, 10)) as mes, count(teacher.id) as numero_lesson from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id where anio>='"+start+"' and anio<='"+end+"' Group By anio,teacher.id ORDER BY anio"
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)     
         
         for row in result:
@@ -83,7 +83,7 @@ def frecuencyChannel(id_device,start,end):
     list_cant_channel = []
     try:
         for x in range(6):
-            query = "SELECT l.id as lesson_id, l.title, JSON_EXTRACT(l.resources,'$["+str(x)+"].channel_id') AS canal_id,c.name as nombre_canal, strftime('%Y/%m/%d',SUBSTRING(l.date_created, 1, 10)) as anio FROM lessons_lesson as l INNER join content_channelmetadata as c ON canal_id=c.id where anio>='"+start+"' and anio<='"+end+"' and canal_id IS NOT NULL"
+            query = "SELECT l.id as lesson_id, l.title, JSON_EXTRACT(l.resources,'$["+str(x)+"].channel_id') AS canal_id,c.name as nombre_canal, strftime('%Y/%m/%d',substr(l.date_created, 1, 10)) as anio FROM lessons_lesson as l INNER join content_channelmetadata as c ON canal_id=c.id where anio>='"+start+"' and anio<='"+end+"' and canal_id IS NOT NULL"
             result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query) 
             for row in result:
                 #print(row[0]+"\t"+row[1]+"\t"+row[2]+"\t"+str(row[3]))
@@ -115,7 +115,7 @@ def frecuencyChannel(id_device,start,end):
 def frecuencyLessonPerTeacher(id_device,start,end):
     list_item = []
     try:
-        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',SUBSTRING(l.date_created, 1, 10)) as anio, count(teacher.id) as numero_lesson from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id where anio>='"+start+"' and anio<='"+end+"' Group By anio, teacher.id ORDER BY anio"
+        query = "select teacher.id,teacher.full_name, strftime('%Y/%m/%d',substr(l.date_created, 1, 10)) as anio, count(teacher.id) as numero_lesson from lessons_lesson as l INNER JOIN kolibriauth_facilityuser as teacher ON l.created_by_id=teacher.id where anio>='"+start+"' and anio<='"+end+"' Group By anio, teacher.id ORDER BY anio"
         result = dao.DBManager.executeResult(dao.DBManager.DB_KOLIBRI,query)    
         
         for row in result:
