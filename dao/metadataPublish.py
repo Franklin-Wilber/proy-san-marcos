@@ -5,7 +5,6 @@ import datetime
 import json
 import helpers
 import dao.DBManager
-import config
 import pandas as pd
 import sqlite3
 import sys
